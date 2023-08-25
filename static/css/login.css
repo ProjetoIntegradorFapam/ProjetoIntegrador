@@ -1,0 +1,22 @@
+button {
+    padding: 1rem;
+    width: 10rem;
+    background: #42D526;
+    border-radius: 5rem;
+    border: 0;
+    margin-top: 3rem;
+}
+
+a {
+    display: block;
+    text-decoration: none;
+    color: #000;
+}
+
+form {
+    padding: 1rem;
+    background: #e6e6e6;
+    border: 2px solid #42D526;
+    min-width: 25rem;
+    border-radius: 2rem;
+}
