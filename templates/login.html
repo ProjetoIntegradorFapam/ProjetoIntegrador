@@ -4,7 +4,17 @@
     <link rel="stylesheet" href="{{url_for('static', filename='css/login.css')}}">
 </head>
 <section>
-    <form class="position-absolute top-50 start-50 translate-middle">
+  {% set messages = get_flashed_messages() %}
+    {% if messages%}
+      {% for message in messages%}
+          <ul id="message" class="message position-absolute top-0 start-50 translate-middle-x">
+            <li class="text-center">
+              {{message}}
+            </li>
+          </ul>
+      {% endfor %}
+    {% endif%}
+    <form action="/login" method="post"class="position-absolute top-50 start-50 translate-middle">
         <h1 class="text-center">LOGIN</h1>
         <div class="mb-3">
             <label for="exampleInputCPF" class="form-label">CPF</label>
@@ -34,5 +44,13 @@
    if (v.length == 11) i.value += "-";
 
    }
+   
+  ul = document.getElementById('message')
+  
+  if (ul) {
+    setTimeout(() => {
+      ul.style.opacity = '0'
+    },3000)
+  }
 </script>
 {% endblock%}
