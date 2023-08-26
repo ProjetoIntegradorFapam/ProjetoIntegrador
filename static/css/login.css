@@ -16,19 +16,15 @@ a {
 
 form {
     padding: 1rem;
-    background: #fff;
+    background: #e8e8f3;
     min-width: 20rem;
-    border:1px solid var(--light-green);
     border-radius: 1rem;
+    box-shadow: 7px 7px 15px rgba(55, 84, 170, 0.15), -7px -7px 20px rgba(255, 255, 255, 1), inset 0px 0px 4px rgba(255, 255, 255, 0.2), inset 7px 7px 15px rgba(55, 84, 170, 0), inset -7px -7px 20px rgba(255, 255, 255, 0), 0px 0px 4px rgba(255, 255, 255, 0);
 }
 
-.message {
-    margin-top: 10px;
-    min-width: 20rem;
-    height: auto;
+form img {
+    border-radius: 1rem;
     padding: 0.5rem;
-    color: #fff;
-    list-style: none;
-    border-radius: 5px;
-    transition: .3s all;
+    width: 5rem;
 }
+

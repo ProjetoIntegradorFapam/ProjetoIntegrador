@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+{% block body %}
+<head>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/home.css')}}">
+</head>
+<section id="sidebar">
+    {% set messages = get_flashed_messages(with_categories=true) %}
+        {% if messages%}
+        {% for category, message in messages%}
+            <ul id="message" class="message {{category}} position-absolute bottom-0 start-50 translate-middle-x">
+                <li class="text-center">
+                {{message}}
+                </li>
+            </ul>
+        {% endfor %}
+        {% endif%}
+    <div class="content">
+    </div>
+    <nav class="sidebar">
+        <div class="user-logo">
+            <img class="position-relative top-50 start-50 translate-middle" src="../static/img/favicon.png"></img>
+        </div>
+        <ul>
+            <li>
+                <span class="fa fa-home" style="color: var(--orange); font-size: 25px;"></span>
+                <a href="#">Página Inicial</a>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <span class="fa fa-pen-to-square" style="color: var(--orange); font-size: 25px;"></span>
+                <a href="#">Cadastro</a>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <span class="fa fa-bar-chart" style="color: var(--orange); font-size: 25px;"></span>
+                <a href="#">Relatório</a>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <span class="fa fa-circle-info" style="color: var(--orange); font-size: 25px;"></span>
+                <a href="#">Sobre</a>
+            </li>
+        </ul>
+    </nav>
+</section>
+
+
+{% endblock %}

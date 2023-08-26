@@ -8,7 +8,7 @@
   {% set messages = get_flashed_messages(with_categories=true) %}
     {% if messages%}
       {% for category, message in messages%}
-          <ul id="message" class="message {{category}} position-absolute bottom-0 start-50 translate-middle-x">
+          <ul id="message" class="message bg-sucess position-absolute bottom-0 start-50 translate-middle-x">
             <li class="text-center">
               {{message}}
             </li>
@@ -16,7 +16,7 @@
       {% endfor %}
     {% endif%}
     <form action="/login" method="POST"class="position-absolute top-50 start-50 translate-middle">
-        <h1 class="text-center">LOGIN</h1>
+        <img class="position-relative top-0 start-50 translate-middle-x" src="{{url_for('static', filename='img/favicon.png')}}" alt="Logomarca">
         <div class="mb-3">
             <label for="exampleInputCPF" class="form-label">CPF</label>
             <input name="cpf" type="text" id="cpf_input" aria-describedby="emailHelp" placeholder="000.000.000-00" oninput="mascara(this)" checked>
@@ -45,14 +45,6 @@
    if (v.length == 11) i.value += "-";
 
    }
-   
-  ul = document.getElementById('message')
-  
-  if (ul) {
-    setTimeout(() => {
-      ul.style.opacity = '0'
-    },3000)
-  }
 
 </script>
 {% endblock%}

@@ -1,0 +1,58 @@
+#sidebar {
+  width: 300px;
+  height: 100%;
+}
+
+.sidebar {
+  position: absolute;
+  width:300px;
+  height: 100%;
+  background:#e6e6e6;
+}
+
+.content {
+  position: absolute;
+  display: inline;
+  width: 100%;
+  height: 3rem;
+  background: var(--dark-green);
+}
+
+.user-logo {
+  width: 100%;
+  height: 150px;
+  background:#e6e6e6;
+}
+
+.user-logo img {
+  width: 30%;
+}
+
+nav ul {
+  width: 100%;
+  list-style: none;
+  float: left;
+  margin-bottom: 40px;
+}
+
+span {
+  position: absolute;
+}
+
+a {
+  position: absolute;
+  margin-left: 4rem;
+  margin-top: 5px;
+}
+
+.message {
+  margin-top: 10px;
+  min-width: 20rem;
+  height: auto;
+  padding: 0.5rem;
+  color: #fff;
+  list-style: none;
+  border-radius: 5px;
+  transition: .3s all;
+  background: #198754;
+}
