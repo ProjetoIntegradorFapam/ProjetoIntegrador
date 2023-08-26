@@ -1,13 +1,14 @@
 {% extends 'layout.html' %}
 {% block body %}
 <head>
-    <link rel="stylesheet" href="{{url_for('static', filename='css/login.css')}}">
+  <link rel="stylesheet" href="{{url_for('static', filename='css/login.css')}}">
 </head>
+
 <section>
-  {% set messages = get_flashed_messages() %}
+  {% set messages = get_flashed_messages(with_categories=true) %}
     {% if messages%}
-      {% for message in messages%}
-          <ul id="message" class="message position-absolute top-0 start-50 translate-middle-x">
+      {% for category, message in messages%}
+          <ul id="message" class="message {{category}} position-absolute bottom-0 start-50 translate-middle-x">
             <li class="text-center">
               {{message}}
             </li>
@@ -18,12 +19,12 @@
         <h1 class="text-center">LOGIN</h1>
         <div class="mb-3">
             <label for="exampleInputCPF" class="form-label">CPF</label>
-            <input type="text" class="form-control" id="exampleInputCPF" aria-describedby="emailHelp" placeholder="000.000.000-00" oninput="mascara(this)" checked>
+            <input name="cpf" type="text" id="cpf_input" aria-describedby="emailHelp" placeholder="000.000.000-00" oninput="mascara(this)" checked>
         </div>
 
         <div class="mb-3">
           <label for="exampleInputPassword" class="form-label">Senha</label>
-          <input type="password" class="form-control" id="exampleInputPassword" placeholder="Digite sua senha">
+          <input name="password" type="password" id="password_input" placeholder="Digite sua senha">
         </div>
         <a class="text-center" href="/login/recuperar_senha">Esqueceu sua senha?</a>
         <button type="submit" class="position-relative bottom-0 start-50 translate-middle">ENTRAR</button>
@@ -52,5 +53,6 @@
       ul.style.opacity = '0'
     },3000)
   }
+
 </script>
 {% endblock%}

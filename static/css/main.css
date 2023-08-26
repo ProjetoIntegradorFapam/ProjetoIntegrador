@@ -1,13 +1,28 @@
+:root {
+    --orange: #FA8A40;
+    --light-green: #86C108;
+    --dark-green: #2D4F34;
+    --light-grey: #c9c9c9;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Montserrat';
+    font-weight: bold;
 }
 
 body {
     height: 100vh;
     overflow: hidden;
-    background-image: url('../img/login_background.jpeg');
-    background-size: 100%;
-    background-repeat: no-repeat;
+}
+
+input {
+    width: 100%;
+    padding: 0.5rem;
+    outline: 0;
+    border: 1px solid var(--light-grey);
+    border-radius: 5px;
+    font-weight: normal;
 }
