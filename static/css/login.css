@@ -4,7 +4,7 @@ button {
     background: var(--light-green);
     border-radius: 5rem;
     border: 0;
-    margin-top: 3rem;
+    margin-top: 4rem;
     color: #fff;
 }
 
@@ -28,3 +28,6 @@ form img {
     width: 5rem;
 }
 
+span {
+    left: 30px;
+}

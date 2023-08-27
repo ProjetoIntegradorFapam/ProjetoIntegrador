@@ -27,13 +27,12 @@ def login():
     if cpf == "00000000000" and password == "12345":
 
       #Enviando mensagem de sucesso e fazendo o redirecionamento para a rota "/home"
-      flash('Login efetuado com sucesso!', 'bg-sucess')
       return redirect('/home')
 
     else:
 
       #Enviando mensagem de erro e fazendo o redirecionamento para a rota "/login"
-      flash('Falha ao efetuar o login!', 'bg-danger')
+      flash('Falha ao efetuar o login!')
       return redirect('/login')
   else:
     return

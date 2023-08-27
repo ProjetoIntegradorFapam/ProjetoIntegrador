@@ -5,11 +5,12 @@
 </head>
 
 <section>
-  {% set messages = get_flashed_messages(with_categories=true) %}
-    {% if messages%}
-      {% for category, message in messages%}
-          <ul id="message" class="message bg-sucess position-absolute bottom-0 start-50 translate-middle-x">
+  {% set messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+          <ul id="message" class="message position-absolute bottom-0 start-50 translate-middle-x">
             <li class="text-center">
+              <img src="{{url_for('static', filename='img/circle-exclamation.svg')}}" width="25px" height="25px" style="margin-top: -5px;" alt="Alerta">
               {{message}}
             </li>
           </ul>
@@ -18,15 +19,15 @@
     <form action="/login" method="POST"class="position-absolute top-50 start-50 translate-middle">
         <img class="position-relative top-0 start-50 translate-middle-x" src="{{url_for('static', filename='img/favicon.png')}}" alt="Logomarca">
         <div class="mb-3">
-            <label for="exampleInputCPF" class="form-label">CPF</label>
-            <input name="cpf" type="text" id="cpf_input" aria-describedby="emailHelp" placeholder="000.000.000-00" oninput="mascara(this)" checked>
+            <label for="cpf_input" class="form-label">CPF</label>
+            <input name="cpf" type="text" id="cpf_input" aria-describedby="cpfHelp" placeholder="000.000.000-00" oninput="mascara(this)" checked>
         </div>
 
         <div class="mb-3">
-          <label for="exampleInputPassword" class="form-label">Senha</label>
+          <label for="password_input" class="form-label">Senha</label>
           <input name="password" type="password" id="password_input" placeholder="Digite sua senha">
         </div>
-        <a class="text-center" href="/login/recuperar_senha">Esqueceu sua senha?</a>
+        <a class="text-center" href="/login/recuperar_senha">Esqueceu sua senha?</a><br>
         <button type="submit" class="position-relative bottom-0 start-50 translate-middle">ENTRAR</button>
       </form>
 </section>

@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
     <link rel="stylesheet" href="{{url_for('static', filename='css/login.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/home.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/checkbox.css')}}">
 </head>
 <body>
     {% block body %}
@@ -24,5 +26,6 @@
             },3000)
         }
     </script>
+    <script src="{{url_for('static', filename='js/set_theme.js')}}"></script>
 </body>
 </html>
