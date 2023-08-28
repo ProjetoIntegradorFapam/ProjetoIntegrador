@@ -1,68 +1,83 @@
 {% extends 'layout.html' %}
 {% block body %}
-<div class="main">
-    <div class="row">
-        <div class="col-2 menu">
-            <div class="menu-logo">
-                <div id="menu-logo" class="position-relative top-50 start-50 translate-middle">
-                    <div id="logo"></div>
+<section>
+    <div class="main">
+        <div class="row">
+            <div class="col-2 menu">
+                <div class="menu-logo">
+                    <div id="menu-logo" class="position-relative top-50 start-50 translate-middle">
+                        <div id="logo"></div>
+                    </div>
+                </div>
+                <div class="menu-items">
+                    <div class="menu-item row">
+                        <div id="menu-item-icon">
+                            <i class="fa fa-house fa-xl"></i>
+                        </div>
+                        <div id="menu-item-content"><a href="/home" class="theme-font">PÁGINA INICIAL</a></div>
+                    </div>
+                    <div class="menu-item row">
+                        <div id="menu-item-icon">
+                            <i class="fa fa-user-plus fa-xl"></i>
+                        </div>
+                        <div id="menu-item-content"><a href="#" class="theme-font">CADASTRO</a></div>
+                    </div>
+                    <div class="menu-item row">
+                        <div id="menu-item-icon">
+                            <i class="fa fa-file-lines fa-xl"></i>
+                        </div>
+                        <div id="menu-item-content"><a href="#" class="theme-font">RELATÓRIOS</a></div>
+                    </div>
+                    <div class="menu-item row">
+                        <div id="menu-item-icon">
+                            <i class="fa fa-circle-info fa-xl"></i>
+                        </div>
+                        <div id="menu-item-content"><a href="#" class="theme-font">SOBRE</a></div>
+                    </div>
                 </div>
             </div>
-            <div class="menu-items">
-                <div class="menu-item row">
-                    <div id="menu-item-icon">
-                        <i class="fa fa-house fa-xl"></i>
+            <div class="col-10 content">
+                <header>
+                    <div class="profile-circle"></div>
+                </header>
+                <div class="main-content">
+                    <div class="profile-content hidden">
+                        <h1 class="font-lg text-center theme-font">DETALHES</h1>
+                        <ul>
+                            <li>
+                                <a href="#"><i class="fa fa-pen fa-lg"></i><span class="font-sm theme-font">EDITAR</span></a>
+                            </li>
+                            <li>
+                                <i class="fa fa-circle-half-stroke fa-lg"></i>
+                                    <span class="font-sm theme-font">TEMA</span>
+                                    <label class="toggler-wrapper style-1">
+                                        <input name="theme" type="checkbox" class="toggle-dark-mode">
+                                            <div class="toggler-slider">
+                                                <div class="toggler-knob"></div>
+                                            </div>
+                                    </label>
+                            </li>
+                            <li>
+                                <a href="#"></a><i class="fa fa-right-from-bracket fa-lg"></i><span class="font-sm theme-font">DESCONECTAR</span></a>
+                            </li>
+                        </ul>
                     </div>
-                    <div id="menu-item-content"><a href="/home" class="theme-font">PÁGINA INICIAL</a></div>
+                    {% if users %}
+                        <div class="users">
+                            {% for user in users %}
+                                <div id="users-username">
+                                    <a href="#" class="font-lg theme-font">{{user[1]}}</a>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                            <div class="users"><p class="theme-font font-lg" style="margin-left: 35%;">Nenhum usuário encontrado!</p></div>
+                    {% endif %}
                 </div>
-                <div class="menu-item row">
-                    <div id="menu-item-icon">
-                        <i class="fa fa-user-plus fa-xl"></i>
-                    </div>
-                    <div id="menu-item-content"><a href="#" class="theme-font">CADASTRO</a></div>
-                </div>
-                <div class="menu-item row">
-                    <div id="menu-item-icon">
-                        <i class="fa fa-file-lines fa-xl"></i>
-                    </div>
-                    <div id="menu-item-content"><a href="#" class="theme-font">RELATÓRIOS</a></div>
-                </div>
-                <div class="menu-item row">
-                    <div id="menu-item-icon">
-                        <i class="fa fa-circle-info fa-xl"></i>
-                    </div>
-                    <div id="menu-item-content"><a href="#" class="theme-font">SOBRE</a></div>
-                </div>
-            </div>
-        </div>
-        <div class="col-10 content">
-            <header>
-                <div class="profile-circle"></div>
-            </header>
-            <div class="profile-content hidden">
-                <h1 class="font-lg text-center theme-font">DETALHES</h1>
-                <ul>
-                    <li>
-                        <a href="#"><i class="fa fa-pen fa-lg"></i><span class="font-sm theme-font">EDITAR</span></a>
-                    </li>
-                    <li>
-                        <i class="fa fa-circle-half-stroke fa-lg"></i>
-                            <span class="font-sm theme-font">TEMA</span>
-                            <label class="toggler-wrapper style-1">
-                                <input name="theme" type="checkbox" class="toggle-dark-mode">
-                                    <div class="toggler-slider">
-                                        <div class="toggler-knob"></div>
-                                    </div>
-                            </label>
-                    </li>
-                    <li>
-                        <a href="#"></a><i class="fa fa-right-from-bracket fa-lg"></i><span class="font-sm theme-font">DESCONECTAR</span></a>
-                    </li>
-                </ul>
             </div>
         </div>
     </div>
-</div>
+</section>
 <script>
         
     let profile_content = document.querySelector('.profile-content');
