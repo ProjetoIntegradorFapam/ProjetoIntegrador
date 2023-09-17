@@ -16,10 +16,10 @@ a {
 
 form {
     padding: 1rem;
-    background: #e8e8f3;
+    background: #F5F5F5;
     min-width: 20rem;
+    border:3px solid var(--light-green);
     border-radius: 1rem;
-    box-shadow: 7px 7px 15px rgba(55, 84, 170, 0.15), -7px -7px 20px rgba(255, 255, 255, 1), inset 0px 0px 4px rgba(255, 255, 255, 0.2), inset 7px 7px 15px rgba(55, 84, 170, 0), inset -7px -7px 20px rgba(255, 255, 255, 0), 0px 0px 4px rgba(255, 255, 255, 0);
 }
 
 form img {
@@ -29,5 +29,20 @@ form img {
 }
 
 span {
+    text-align: center;
+    color: #ff0000;
     left: 30px;
+}
+
+#nameError {
+    display: none;
+    font-size: 0.8em;
+}
+
+#nameError.visible {
+    display: block;
+}
+
+input.invalid {
+    border-color: red;
 }

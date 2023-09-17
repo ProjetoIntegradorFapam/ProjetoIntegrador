@@ -1,5 +1,4 @@
 #importando bibliotecas, frameworks e microframeworks
-#o microframework blueprint é responsável por criar uma coleção de views, ou seja, rotas separadas.
 from flask import Blueprint, render_template, request, redirect, flash
 
 #instanciando "login" utilizando Blueprint (É OBRIGRATÓRIO utilizar "__name__" após o nome da view, ou seja, rota.)
@@ -19,14 +18,17 @@ def login():
   #Tratando rota "POST" para validar os dados e fazer o redirecionamento
   elif request.method == "POST":
 
+    #importanto conexão com banco de dados
+    from db import connection
+
     #Dados do Front-End (AVISO: O CPF ESTÁ SENDO FORMATADO PORQUE O FRONT POSSUI UMA MÁSCARA QUE INCLUI CARACTERES NA STRING)
     cpf = str(request.form.get('cpf')).translate(str.maketrans('', '', '.-'))
-    password = str(request.form.get('password'))
+    senha = str(request.form.get('password'))
 
     #Validação dos dados (AVISO: USUÁRIO E SENHA PARA TESTES)
-    if cpf == "00000000000" and password == "12345":
+    if connection.select_user(cpf, senha) == True:
 
-      #Enviando mensagem de sucesso e fazendo o redirecionamento para a rota "/home"
+      #fazendo o redirecionamento para a rota "/home"
       return redirect('/home')
 
     else:

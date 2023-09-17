@@ -16,36 +16,78 @@
           </ul>
       {% endfor %}
     {% endif %}
-    <form action="/login" method="POST"class="position-absolute top-50 start-50 translate-middle">
+    <div class="container">
+      <form action="/login" method="POST"class="position-absolute top-50 start-50 translate-middle" name="formulario" id="form">
         <img class="position-relative top-0 start-50 translate-middle-x" src="{{url_for('static', filename='img/favicon.png')}}" alt="Logomarca">
         <div class="mb-3">
             <label for="cpf_input" class="form-label">CPF</label>
             <input name="cpf" type="text" id="cpf_input" aria-describedby="cpfHelp" placeholder="000.000.000-00" oninput="mascara(this)" checked>
         </div>
-
         <div class="mb-3">
           <label for="password_input" class="form-label">Senha</label>
           <input name="password" type="password" id="password_input" placeholder="Digite sua senha">
         </div>
         <a class="text-center" href="/login/recuperar_senha">Esqueceu sua senha?</a><br>
-        <button type="submit" class="position-relative bottom-0 start-50 translate-middle">ENTRAR</button>
+        <button id="submit" type="submit" class="position-relative bottom-0 start-50 translate-middle" onclick="return validate()">ENTRAR</button>
+				<span role="alert" id="nameError" aria-hidden="true">
+					Preencha todos os campos!
+				</span>
       </form>
+    </div>
 </section>
 <script>
-    function mascara(i){
-   
-   var v = i.value;
-   
-   if(isNaN(v[v.length-1])){ // impede entrar outro caractere que não seja número
-       i.value = v.substring(0, v.length-1);
-       return;
-   }
-   
-   i.setAttribute("maxlength", "14");
-   if (v.length == 3 || v.length == 7) i.value += ".";
-   if (v.length == 11) i.value += "-";
+	function mascara(i){
+	
+	var v = i.value;
+	
+	if(isNaN(v[v.length-1])){ // impede entrar outro caractere que não seja número
+			i.value = v.substring(0, v.length-1);
+			return;
+	}
+	
+	i.setAttribute("maxlength", "14");
+	if (v.length == 3 || v.length == 7) i.value += ".";
+	if (v.length == 11) i.value += "-";
 
-   }
+	}
+
+  function validate() {
+
+    const cpf = document.getElementById("cpf_input");
+		const password = document.getElementById("password_input");
+    let valid = true;
+
+    if (!cpf.value) {
+      const nameError = document.getElementById("nameError");
+      nameError.classList.add("visible");
+      cpf.classList.add("invalid");
+      nameError.setAttribute("aria-hidden", false);
+      nameError.setAttribute("aria-invalid", true);
+    }
+
+		if (!password.value) {
+			const nameError = document.getElementById("nameError");
+      nameError.classList.add("visible");
+      password.classList.add("invalid");
+      nameError.setAttribute("aria-hidden", false);
+      nameError.setAttribute("aria-invalid", true);
+		}
+
+		setTimeout(() => {
+			const nameError = document.getElementById("nameError");
+			nameError.classList.remove("visible");
+			cpf.classList.remove("invalid");
+			password.classList.remove("invalid");
+			nameError.setAttribute("aria-hidden", true);
+			nameError.setAttribute("aria-invalid", false);
+		}, 5000);
+
+    if (cpf.value && password.value) {
+      return valid
+    } else {
+      return false
+    }
+  }
 
 </script>
 {% endblock%}

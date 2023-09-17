@@ -1,19 +1,17 @@
 #importação de bibliotecas, frameworks e microframeworks
 from flask import Flask, session
 
-#importação da rota "login"
+#importação de rotas
 from routes import login, home
 
 #instanciando flask
 app = Flask(__name__)
 
 #configurando secret_key
-app.secret_key = "hsjebej337isb"
+app.secret_key = "projeto_integrador:SSH-xlmns2qw89@web_application_with_python.projeto_integrador"
 
-#registrando rota "/login"
+#registro de rotas
 app.register_blueprint(login.bp)
-
-#registrando rota "/home"
 app.register_blueprint(home.bp)
 
 #verificando se está em ambiente de desenvolvimento
