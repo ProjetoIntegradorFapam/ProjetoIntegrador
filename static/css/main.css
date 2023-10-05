@@ -1,27 +1,23 @@
 :root {
     --orange: #FA8A40;
     --light-green: #86C108;
-    --light-grey: #e9e9e9;
     --red: #dc3545;
     --blue: #0d6efd;
     --yellow: #ffc107;
-    --bg-grey: #f2f2ff;
-}
-
-html {
-    --text: #f2f2ff;
-    --background: #EAECEE;
-    --background2: #f2f2ff;
-    --favicon: url(../img/favicon.png);
+    --light-theme-font: #e9e9e9;
+    --dark-theme-font: #383838;
+    --light-theme-bg: #e9e9e9;
+    --dark-theme-bg: #383838;
 }
 
 * {
-    margin: 0 auto;
+    margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Montserrat';
     font-weight: bold;
-    transition: .2s all;
+    transition: .10s all;
+    font-size: 1.2rem;
 }
 
 body {
@@ -30,13 +26,14 @@ body {
     background: var(--background);
 }
 
-input {
-    width: 100%;
-    padding: 0.5rem;
-    outline: 0;
-    border: 1px solid var(--light-grey);
-    border-radius: 5px;
-    font-weight: normal;
+.light {
+    background: var(--light-theme-bg);
+    color: var(--dark-theme-font);
+}
+
+.dark {
+    background: var(--dark-theme-bg);
+    color: var(--light-theme-font);
 }
 
 .message {
@@ -62,4 +59,8 @@ input {
 
 .theme-font {
     color: var(--text);
+}
+
+i {
+    color: #FF7F0A;
 }

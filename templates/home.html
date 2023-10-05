@@ -1,0 +1,54 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/home.css')}}">
+{% endblock %}
+
+{% block body %}
+<nav class="navbar fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Página Inicial</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-logo" href="#">
+        <img class="navbar-profile" src="{{url_for('static', filename='img/favicon.png')}}" alt="Foto de perfil">
+      </a>
+      <div class="offcanvas offcanvas-start show" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+                <img class="menu-profile" src="{{url_for('static', filename='img/favicon.png')}}" alt="Foto de perfil">
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#"><i class="fa-solid fa-house"></i> Página Inicial</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa-solid fa-pen-to-square"></i> Cadastro
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-user"></i> Cliente</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#"><i class="fa-solid fa-apple-whole"></i> Nutricionista</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#"><i class="fa-solid fa-chart-column"></i> Relatórios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#"><i class="fa-solid fa-circle-info"></i> Sobre</a>
+                    </li>
+                </ul>
+            </div>
+      </div>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block script %}
+    <script src="{{url_for('static', filename='js/home.js')}}"></script>
+{% endblock %}
