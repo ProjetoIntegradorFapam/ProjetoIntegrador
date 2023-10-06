@@ -1,4 +1,4 @@
-button {
+#submit {
     padding: 1rem;
     width: 10rem;
     background: var(--light-green);
@@ -8,7 +8,7 @@ button {
     color: #fff;
 }
 
-a {
+#forgotpass {
     display: block;
     text-decoration: none;
     color: #000;
@@ -21,6 +21,7 @@ a {
     max-width: 20rem;
     border:3px solid var(--light-green);
     border-radius: 1rem;
+    margin-top: 1rem;
 }
 
 form img {
@@ -54,5 +55,9 @@ span {
 }
 
 input.invalid {
-    border-color: red;
+    border-color: var(--red);
+}
+
+#info_icon {
+    color: var(--red);
 }
