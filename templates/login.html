@@ -17,8 +17,8 @@
       {% endfor %}
     {% endif %}
     <div class="container">
-      <form action="/login" method="POST" class="form position-absolute top-50 start-50 translate-middle" name="formulario">
-        <img class=" position-relative top-0 start-50 translate-middle-x" src="{{url_for('static', filename='img/favicon.png')}}" alt="Logomarca">
+      <form action="/login" method="POST"class="position-absolute top-50 start-50 translate-middle" name="formulario" id="form">
+        <img class="position-relative top-0 start-50 translate-middle-x" src="{{url_for('static', filename='img/favicon.png')}}" alt="Logomarca">
         <div class="mb-3">
             <label for="cpf_input" class="form-label">CPF</label>
             <input name="cpf" type="text" id="cpf_input" aria-describedby="cpfHelp" placeholder="000.000.000-00" oninput="mascara(this)" checked>

@@ -1,21 +1,21 @@
 def select_users():
 
     #importação do mysql
-    import mysql.connector
+    import psycopg2
 
     #instanciando conexão
-    connection = mysql.connector.connect(
+    connection = psycopg2.connect(
         host='localhost',
-        user='root',
-        password='admin',
-        database='projeto_integrador'
+        user='postgres',
+        password='123',
+        dbname='clinica_nutricional'
     )
 
     #instanciando cursor
     cursor = connection.cursor()
 
     #comando a ser utilizado
-    command = 'SELECT * FROM usuario'
+    command = 'SELECT * FROM cliente'
 
     #executando comando
     cursor.execute(command)
@@ -41,21 +41,21 @@ def select_users():
 def select_user(cpf,senha):
 
     #importação do mysql
-    import mysql.connector
+    import psycopg2
 
     #instanciando conexão
-    connection = mysql.connector.connect(
+    connection = psycopg2.connect(
         host='localhost',
-        user='root',
-        password='admin',
-        database='projeto_integrador'
+        user='postgres',
+        password='123',
+        dbname='clinica_nutricional'
     )
 
     #instanciando cursor
     cursor = connection.cursor()
 
     #comando a ser utilizado
-    command = f"select cpf,senha from usuario where cpf = '{cpf}' and senha = '{senha}'"
+    command = f"select cpf,senha from cliente where cpf = '{cpf}' and senha = '{senha}'"
 
     #executando comando
     cursor.execute(command)

@@ -16,4 +16,4 @@ app.register_blueprint(home.bp)
 
 #verificando se está em ambiente de desenvolvimento
 if __name__ == "__main__":
-    app.run(debug=True, port=3000)
+    app.run(debug=True)

@@ -9,8 +9,13 @@ bp = Blueprint('home', __name__)
 
 #Definindo rota "/home"
 @bp.route('/home', methods=['GET'])
-def login():
+def home():
 
   #renderizando home e enviando os usuários do banco
-  return render_template('home.html', users=connection.select_users())
+  return render_template('home.html')
+
+@bp.route('/editarperfil', methods=['GET'])
+def editProfile():
+
+  return render_template('edit_profile.html')
   
