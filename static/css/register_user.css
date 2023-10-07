@@ -1,0 +1,48 @@
+.content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.register_user {
+    margin-top: 5%;
+    background: var(--bg-grey);
+    padding: 2rem 3rem 2rem 3rem;
+    border: 1px solid var(--dark-green);
+    border-radius: 10px;
+}
+
+.form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem;
+    justify-items: center;
+    align-items: center;
+}
+
+.form input[type='checkbox'] {
+    width: 1.3rem;
+    height: 1.3rem;
+}
+
+#form-check {
+    justify-self: start;
+    margin-top: 20px;
+}
+
+#form-check-label {
+    font-size: 1.3rem;
+    margin-left: 10px;
+}
+
+#btn-submit {
+    width: 100%;
+    background: var(--light-green);
+}
+
+.form input {
+    width: 350px;
+}

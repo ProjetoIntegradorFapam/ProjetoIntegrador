@@ -74,3 +74,32 @@ def select_user(cpf,senha):
 
     #retornando dados da variável response
     return validate
+
+def insert_user(cpf, nome, rua, numero, bairro, cidade, celular, email, nutricionista_id, permissao_id, senha, cnpj_vinculado):
+    
+    from db.connection import db_connect
+
+    connection = db_connect()
+    
+    #instanciando cursor
+    cursor = connection.cursor()
+
+    command = f"select cpf from usuario where cpf = '{cpf}'"
+    cursor.execute(command)
+
+    response = cursor.fetchall()
+
+    if len(response) != 0:
+        return False
+    else:
+        command = f'INSERT INTO usuario (cpf, nome, rua, numero, bairro, cidade, celular, email, nutricionista_id, permissao_id, senha, cnpj_vinculado) values ("{cpf}", "{nome}", "{rua}", {numero}, "{bairro}", "{cidade}", "{celular}", "{email}", {nutricionista_id}, {permissao_id}, "{senha}", "{cnpj_vinculado}")'
+    
+        cursor.execute(command)
+        
+        connection.commit()
+
+        cursor.close()
+
+        connection.close()
+
+        return True

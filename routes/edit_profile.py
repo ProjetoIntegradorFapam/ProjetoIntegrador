@@ -5,11 +5,4 @@ from flask import Blueprint, render_template
 from db import utils
 
 #instanciando "home" utilizando Blueprint (É OBRIGRATÓRIO utilizar "__name__" após o nome da view, ou seja, rota.)
-bp = Blueprint('home', __name__)
-
-#Definindo rota "/home"
-@bp.route('/home', methods=['GET'])
-def home():
-
-  #renderizando home e enviando os usuários do banco
-  return render_template('home.html')
+bp = Blueprint('edit_profile', __name__)
