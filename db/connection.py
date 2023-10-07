@@ -6,9 +6,9 @@ def db_connect():
     #instanciando conexão
     connection = mysql.connector.connect(
         host='localhost',
-        user='postgres',
-        password='123',
-        dbname='clinica_nutricional'
+        user='root',
+        password='admin',
+        database='clinica_nutricional'
     )
 
     if connection:

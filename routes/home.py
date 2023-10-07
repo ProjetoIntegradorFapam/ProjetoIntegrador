@@ -2,7 +2,7 @@
 from flask import Blueprint, render_template
 
 #importanto conexão com banco de dados
-from db import connection
+from db import utils
 
 #instanciando "home" utilizando Blueprint (É OBRIGRATÓRIO utilizar "__name__" após o nome da view, ou seja, rota.)
 bp = Blueprint('home', __name__)

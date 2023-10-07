@@ -1,6 +1,6 @@
 def select_users():
     
-    from connection import db_connect
+    from db.connection import db_connect
 
     connection = db_connect()
     
@@ -8,7 +8,7 @@ def select_users():
     cursor = connection.cursor()
 
     #comando a ser utilizado
-    command = 'SELECT * FROM cliente'
+    command = 'SELECT * FROM usuario'
 
     #executando comando
     cursor.execute(command)
@@ -33,7 +33,7 @@ def select_users():
 
 def select_user(cpf,senha):
 
-    from connection import db_connect
+    from db.connection import db_connect
 
     connection = db_connect()
 
@@ -41,7 +41,7 @@ def select_user(cpf,senha):
     cursor = connection.cursor()
 
     #comando a ser utilizado
-    command = f"select cpf,senha from cliente where cpf = '{cpf}' and senha = '{senha}'"
+    command = f"select cpf,senha from usuario where cpf = '{cpf}' and senha = '{senha}'"
 
     #executando comando
     cursor.execute(command)

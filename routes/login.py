@@ -19,14 +19,14 @@ def login():
   elif request.method == "POST":
 
     #importanto conexão com banco de dados
-    from db import connection
+    from db import utils
 
     #Dados do Front-End (AVISO: O CPF ESTÁ SENDO FORMATADO PORQUE O FRONT POSSUI UMA MÁSCARA QUE INCLUI CARACTERES NA STRING)
     cpf = str(request.form.get('cpf')).translate(str.maketrans('', '', '.-'))
     senha = str(request.form.get('password'))
 
     #Validação dos dados (AVISO: USUÁRIO E SENHA PARA TESTES)
-    if connection.select_user(cpf, senha) == True:
+    if utils.select_user(cpf, senha) == True:
 
       #fazendo o redirecionamento para a rota "/home"
       return redirect('/home')
