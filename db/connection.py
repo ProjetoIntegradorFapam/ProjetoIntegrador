@@ -7,7 +7,7 @@ def db_connect():
     connection = mysql.connector.connect(
         host='localhost',
         user='root',
-        password='admin',
+        password='8072',
         database='clinica_nutricional'
     )
 
