@@ -75,7 +75,7 @@ def select_user(cpf,senha):
     #retornando dados da variável response
     return validate
 
-def insert_user(cpf, nome, rua, numero, bairro, cidade, celular, email, nutricionista_id, permissao_id, senha, cnpj_vinculado):
+def insert_user(cpf, nome, rua, numero, bairro, cidade, celular, email, senha):
     
     from db.connection import db_connect
 
@@ -92,7 +92,7 @@ def insert_user(cpf, nome, rua, numero, bairro, cidade, celular, email, nutricio
     if len(response) != 0:
         return False
     else:
-        command = f'INSERT INTO usuario (cpf, nome, rua, numero, bairro, cidade, celular, email, nutricionista_id, permissao_id, senha, cnpj_vinculado) values ("{cpf}", "{nome}", "{rua}", {numero}, "{bairro}", "{cidade}", "{celular}", "{email}", {nutricionista_id}, {permissao_id}, "{senha}", "{cnpj_vinculado}")'
+        command = f'INSERT INTO usuario (cpf, nome, rua, numero, bairro, cidade, celular, email, senha) values ("{cpf}", "{nome}", "{rua}", {numero}, "{bairro}", "{cidade}", "{celular}", "{email}", "{senha}")'
     
         cursor.execute(command)
         
