@@ -1,5 +1,5 @@
 #importando bibliotecas, frameworks e microframeworks
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, redirect, url_for
 
 #importanto conexão com banco de dados
 from db import utils
@@ -20,7 +20,10 @@ def render_user():
         cidade = str(request.form.get('cidade'))
         celular = str(request.form.get('celular'))
         email = str(request.form.get('email'))
-        
+        senha = str(request.form.get('senha'))
+        utils.insert_user(cpf, nome, rua, numero, bairro, cidade, celular, email, senha)
+        return redirect(url_for('register_user.render_user'))
+
 
 # @bp.route('/register_user', methods=['POST'])
 # def insert_user():
