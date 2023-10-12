@@ -1,13 +1,11 @@
 def db_connect():
-    import pg8000
-    try:
-        connection = pg8000.connect(
+    import mysql.connector
+    connection = mysql.connector.connect(
             host='localhost',
-            user='postgres',
+            user='root',
             password='8072',
             database='clinica_nutricional'
         )
+    
+    if connection:
         return connection
-    except Exception as e:
-        print('Erro de conexão com o BD {}'.format(e))
-        return None
