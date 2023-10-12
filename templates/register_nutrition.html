@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+{% block head %}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/register.css')}}">
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid content">
+  <div class="register">
+    <form action="/register_nutricionista" id="register_nutricionista_form" method="POST" class="row g-3 needs-validation was-validated">
+      <div class="col-md-4">
+         <label for="validationCustom01" class="form-label">CPF</label>
+         <input name="cpf" type="text" class="form-control" id="validationCustom01" required="" placeholder="Digite o seu cpf">
+         <div class="invalid-feedback">
+            INSIRA O CPF!
+         </div>
+      </div>
+      <div class="col-md-8">
+         <p>Usuário não encontrado</p>
+      </div>
+      <div class="col-md-4">
+         <label for="validationCustom02" class="form-label">CFN</label>
+         <input name="nome" type="text" class="form-control" id="validationCustom02" required="" placeholder="Digite o seu nome">
+         <div class="invalid-feedback">
+            INSIRA O NOME!
+         </div>
+      </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block script %}
+    <script src="{{url_for('static', filename='js/register_nutricionista.js')}}"></script>
+{% endblock %}

@@ -7,7 +7,7 @@
     height: 100vh;
 }
 
-.register_user {
+.register {
     margin-top: 5%;
     background: var(--bg-grey);
     padding: 2rem 3rem 2rem 3rem;
@@ -48,4 +48,8 @@
 
 .form input {
     width: 350px;
+}
+
+#render_user_found {
+    display: inline-block;
 }
