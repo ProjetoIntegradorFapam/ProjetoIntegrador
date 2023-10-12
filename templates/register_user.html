@@ -6,49 +6,85 @@
 {% block body %}
 <div class="container-fluid content">
   <div class="register_user">
-    <form action="/register_user" method="POST" class="form text-left">
-        <div class="mb-3">
-          <label for="exampleInputName" class="form-label">NOME</label>
-          <input name="nome" type="text" class="form-control" id="exampleInputNome" aria-describedby="nomeHelp" placeholder="Nome ...">
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputCpf" class="form-label">CPF</label>
-          <input name="cpf" type="text" class="form-control" id="exampleInputCpf" aria-describedby="cpfHelp" placeholder="000-000-000-00">
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputRua" class="form-label">RUA</label>
-          <input name="rua" type="text" class="form-control" id="exampleInputRua" aria-describedby="ruaHelp" placeholder="Rua ...">
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputNumero" class="form-label">NÚMERO</label>
-          <input name="numero" type="text" class="form-control" id="exampleInputNumero" aria-describedby="numeroHelp" placeholder="0">
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputBairro" class="form-label">BAIRRO</label>
-          <input name="bairro" type="text" class="form-control" id="exampleInputBairro" aria-describedby=bairroHelp" placeholder="Bairro ...">
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputCidade" class="form-label">CIDADE</label>
-          <input name="cidade" type="text" class="form-control" id="exampleInputCidade" aria-describedby="cidadeHelp" placeholder="Cidade ...">
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputCelular" class="form-label">CELULAR</label>
-          <input name="celular" type="text" class="form-control" id="exampleInputCelular" aria-describedby="celularHelp" placeholder="(00) 00000-0000">
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputEmail" class="form-label">EMAIL</label>
-          <input name="email" type="email" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="seuemail@gmail.com">
-        </div>
-        <div class="mb-3">
-          <label for="exampleInputSenha" class="form-label">SENHA</label>
-          <input name="senha" type="password" class="form-control" id="exampleInputSenha" aria-describedby="senhaHelp" placeholder="Digite a sua Senha">
-        </div>
-        <div class="mb-3 form-check">
-          <label id="form-check-label" class="form-check-label" for="exampleCheck1">ADMINISTRADOR</label>
-          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-        </div>
-        <button id="btn-submit" type="submit" class="btn btn-success">CADASTRAR</button>
-      </form>
+    <form action="/register_user" id="register_user_form" method="POST" class="row g-3 needs-validation was-validated">
+      <div class="col-md-4">
+         <label for="validationCustom01" class="form-label">CPF</label>
+         <input name="cpf" type="text" class="form-control" id="validationCustom01" required="" placeholder="Digite o seu cpf">
+         <div class="invalid-feedback">
+            INSIRA O CPF!
+         </div>
+      </div>
+      <div class="col-md-4">
+         <label for="validationCustom02" class="form-label">NOME</label>
+         <input name="nome" type="text" class="form-control" id="validationCustom02" required="" placeholder="Digite o seu nome">
+         <div class="invalid-feedback">
+            INSIRA O NOME!
+         </div>
+      </div>
+      <div class="col-md-6">
+         <label for="validationCustom03" class="form-label">RUA</label>
+         <input name="rua" type="text" class="form-control" id="validationCustom03" required="" placeholder="Digite a rua">
+         <div class="invalid-feedback">
+            INSIRA A RUA!
+         </div>
+      </div>
+      <div class="col-md-4">
+         <label for="validationCustom01" class="form-label">NUMERO</label>
+         <input name="numero" type="number" class="form-control" id="validationCustom01" required="" placeholder="Digite o seu numero">
+         <div class="invalid-feedback">
+            INSIRA O NUMERO!
+         </div>
+      </div>
+      <div class="col-md-4">
+         <label for="validationCustom01" class="form-label">BAIRRO</label>
+         <input name="bairro" type="text" class="form-control" id="validationCustom01" required="" placeholder="Digite o seu bairro">
+         <div class="invalid-feedback">
+            INSIRA O BAIRRO!
+         </div>
+      </div>
+      <div class="col-md-4">
+         <label for="validationCustom01" class="form-label">CIDADE</label>
+         <input name="cidade" type="text" class="form-control" id="validationCustom01" required="" placeholder="Digite a sua cidade">
+         <div class="invalid-feedback">
+            INSIRA A CIDADE!
+         </div>
+      </div>
+      <div class="col-md-4">
+         <label for="validationCustom01" class="form-label">CELULAR</label>
+         <input name="celular" type="text" class="form-control" id="validationCustom01" required="" placeholder="Digite o seu celular">
+         <div class="invalid-feedback">
+            INSIRA O NUMERO DO CELULAR!
+         </div>
+      </div>
+      <div class="col-md-4">
+         <label for="validationCustomUsername" class="form-label">EMAIL</label>
+         <div class="input-group has-validation">
+            <span class="input-group-text" id="inputGroupPrepend">@</span>
+            <input name="email" type="email" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required="">
+            <div class="invalid-feedback">
+               INSIRA O EMAIL
+            </div>
+         </div>
+      </div>
+      <div class="col-md-4">
+         <label for="validationCustom01" class="form-label">SENHA</label>
+         <input name="senha" type="password" class="form-control" id="validationCustom01" required="" placeholder="Digite a sua senha">
+         <div class="invalid-feedback">
+            INSIRA A SENHA!
+         </div>
+      </div>
+      <div class="col-12">
+         <div class="form-check">
+            <input class="form-input" type="checkbox">
+            <label class="form-check-label">
+            ADMINISTRADOR
+            </label>
+         </div>
+      </div>
+      <div class="col-12">
+         <button class="btn btn-success" type="submit">CADASTRAR</button>
+      </div>
+   </form>
   </div>
 </div>
 {% endblock %}
