@@ -1,8 +1,8 @@
 def db_connect():
-    import mysql.connector
-    connection = mysql.connector.connect(
+    import psycopg2
+    connection = psycopg2.connect(
             host='localhost',
-            user='root',
+            user='postgres',
             password='8072',
             database='clinica_nutricional'
         )
