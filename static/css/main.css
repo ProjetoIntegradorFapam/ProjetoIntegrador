@@ -9,6 +9,7 @@
     --light-theme-font: #fff;
     --light-theme-bg: #fff;
     --dark-green: #2D4F34;
+    --black: #000;
 }
 
 * {
@@ -117,10 +118,10 @@ i {
     border: 2px solid var(--dark-green);
     margin-top: 85px;
     margin-right: 35px;
-    background: rgb(134, 193, 8, 0.19);
+    background: var(--light-theme-bg) ;
 }
 
 #offcanvasProfile .nav-link, #offcanvasProfileLabel {
-    color: #fff;
+    color: var(--black);
     font-weight: bold;
 }

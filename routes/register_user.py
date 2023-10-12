@@ -20,16 +20,13 @@ def render_user():
         cidade = str(request.form.get('cidade'))
         celular = str(request.form.get('celular'))
         email = str(request.form.get('email'))
+        permissao_id = str(request.form.get('permissao_id'))
         senha = str(request.form.get('senha'))
-        utils.insert_user(cpf, nome, rua, numero, bairro, cidade, celular, email, senha)
+
+        utils.insert_user(cpf, nome, rua, numero, bairro, cidade, celular, email, int(permissao_id), senha)
         
         flash('Falha ao efetuar o login!')
         return redirect(url_for('home.home'))
-
-
-
-
-
 
 
 
