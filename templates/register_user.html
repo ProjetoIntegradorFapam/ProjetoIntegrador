@@ -1,4 +1,4 @@
-{% extends 'layout.html' %}
+{% extends 'layout_login.html' %}
 {% block head %}
     <link rel="stylesheet" href="{{url_for('static', filename='css/register_user.css')}}">
 {% endblock %}
@@ -9,7 +9,7 @@
     <form action="/register_user" id="register_user_form" method="POST" class="row g-3 needs-validation was-validated">
       <div class="col-md-4">
          <label for="validationCustom01" class="form-label">CPF</label>
-         <input name="cpf" type="text" class="form-control" id="validationCustom01" required="" placeholder="Digite o seu cpf">
+         <input name="cpf" type="text"  class="form-control" id="validationCustom01" required="" placeholder="Digite o seu cpf" maxlength="14" onkeypress="formatar('###.###.###-##', this)" >
          <div class="invalid-feedback">
             INSIRA O CPF!
          </div>
@@ -51,7 +51,7 @@
       </div>
       <div class="col-md-4">
          <label for="validationCustom01" class="form-label">CELULAR</label>
-         <input name="celular" type="text" class="form-control" id="validationCustom01" required="" placeholder="Digite o seu celular">
+         <input name="celular" type="text" class="form-control" id="validationCustom01" required="" placeholder="Digite o seu celular" maxlength="13" onkeypress="formatar('##-#####-####', this)">
          <div class="invalid-feedback">
             INSIRA O NUMERO DO CELULAR!
          </div>
@@ -82,8 +82,8 @@
             <input type="text" name="permissao_id" id="permissao_id" value="" style="display: none;">
          </div>
       </div>
-      <div class="col-12">
-         <button class="btn btn-success" type="submit">CADASTRAR</button>
+      <div class="col-12 text-center">
+         <button class="btn btn-success mx-auto" type="submit">CADASTRAR</button>
       </div>
    </form>
   </div>

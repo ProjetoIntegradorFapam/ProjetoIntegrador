@@ -6,7 +6,7 @@ bp = Blueprint('login', __name__)
 
 #Definindo rota "/login"
 @bp.route('/', methods=['GET','POST'])
-@bp.route('/login', methods=['GET','POST'])
+@bp.route('/login', methods=['GET'])
 def login():
 
   #Tratamento de rotas

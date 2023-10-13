@@ -11,6 +11,7 @@ document.getElementById("register_user_form").addEventListener("submit", functio
     }
 });
 
+//Receber 0 ou 1 do checkbox para a coluna permissao_id no bd...
 document.addEventListener('DOMContentLoaded', function () {
     const permissao_id_checkbox = document.getElementById('permissao_id_checkbox');
     const permissao_id = document.getElementById('permissao_id');
@@ -24,3 +25,15 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     permissao_id.value = permissao_id_checkbox.checked ? '1' : '0';
   });
+
+//Função para criar mascara em cpf e celular
+  function formatar(mascara, documento){
+    var i = documento.value.length;
+    var saida = mascara.substring(0,1);
+    var texto = mascara.substring(i)
+    
+    if (texto.substring(0,1) != saida){
+              documento.value += texto.substring(0,1);
+    }
+    
+  }
