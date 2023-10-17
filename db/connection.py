@@ -2,7 +2,7 @@ def db_connect():
     import mysql.connector
     connection = mysql.connector.connect(
             host='localhost',
-            user='postgres',
+            user='root',
             password='8072',
             database='clinica_nutricional'
         )

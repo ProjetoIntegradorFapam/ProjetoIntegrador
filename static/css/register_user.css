@@ -3,12 +3,12 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    width: 50%;
+    width: 70%;
     height: 100vh;
 }
 
 .register {
-    margin-top: %;
+    margin-top: 7%;
     background: var(--bg-grey);
     padding: 2rem 3rem 2rem 3rem;
     border: 1px solid var(--dark-green);
@@ -17,7 +17,7 @@
 
 .form {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 1rem;
     justify-items: center;
     align-items: center;
@@ -31,7 +31,7 @@
 
 #form-check {
     justify-self: start;
-    margin-top: 20px;
+    margin-top: 10%;
 }
 
 #form-check-label {

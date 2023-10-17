@@ -7,74 +7,76 @@
 <div class="container-fluid content">
   <div class="register">
     <form action="/register_user" id="register_user_form" method="POST" class="row g-3 needs-validation was-validated">
-      <div class="col-md-4">
-         <label for="validationCustom01" class="form-label">CPF</label>
-         <input name="cpf" type="text"  class="form-control" id="validationCustom01" required="" placeholder="Digite o seu cpf" maxlength="14" onkeypress="formatar('###.###.###-##', this)" >
-         <div class="invalid-feedback">
-            INSIRA O CPF!
+      <div class="row">
+         <div class="col-md-6">
+            <label for="validationCustom01" class="form-label">CPF</label>
+            <input name="cpf" type="text"  class="form-control" id="validationCustom01" required="" placeholder="Digite o seu cpf" maxlength="14" onkeypress="formatar('###.###.###-##', this)" >
+            <div class="invalid-feedback">
+               INSIRA O CPF!
+            </div>
          </div>
-      </div>
-      <div class="col-md-4">
-         <label for="validationCustom02" class="form-label">NOME</label>
-         <input name="nome" type="text" class="form-control" id="validationCustom02" required="" placeholder="Digite o seu nome">
-         <div class="invalid-feedback">
-            INSIRA O NOME!
+         <div class="col-md-6">
+            <label for="validationCustom02" class="form-label">NOME</label>
+            <input name="nome" type="text" class="form-control" id="validationCustom02" required="" placeholder="Digite o seu nome">
+            <div class="invalid-feedback">
+               INSIRA O NOME!
+            </div>
+         </div>
+         <div class="col-md-6">
+            <label for="validationCustom03" class="form-label">RUA</label>
+            <input name="rua" type="text" class="form-control" id="validationCustom03" required="" placeholder="Digite a rua">
+            <div class="invalid-feedback">
+               INSIRA A RUA!
+            </div>
+         </div>
+         <div class="col-md-6">
+            <label for="validationCustom01" class="form-label">NUMERO</label>
+            <input name="numero" type="number" class="form-control" id="validationCustom01" required="" placeholder="Digite o seu numero">
+            <div class="invalid-feedback">
+               INSIRA O NUMERO!
+            </div>
+         </div>
+         <div class="col-md-6">
+            <label for="validationCustom01" class="form-label">BAIRRO</label>
+            <input name="bairro" type="text" class="form-control" id="validationCustom01" required="" placeholder="Digite o seu bairro">
+            <div class="invalid-feedback">
+               INSIRA O BAIRRO!
+            </div>
+         </div>
+         <div class="col-md-6">
+            <label for="validationCustom01" class="form-label">CIDADE</label>
+            <input name="cidade" type="text" class="form-control" id="validationCustom01" required="" placeholder="Digite a sua cidade">
+            <div class="invalid-feedback">
+               INSIRA A CIDADE!
+            </div>
          </div>
       </div>
       <div class="col-md-6">
-         <label for="validationCustom03" class="form-label">RUA</label>
-         <input name="rua" type="text" class="form-control" id="validationCustom03" required="" placeholder="Digite a rua">
-         <div class="invalid-feedback">
-            INSIRA A RUA!
-         </div>
-      </div>
-      <div class="col-md-4">
-         <label for="validationCustom01" class="form-label">NUMERO</label>
-         <input name="numero" type="number" class="form-control" id="validationCustom01" required="" placeholder="Digite o seu numero">
-         <div class="invalid-feedback">
-            INSIRA O NUMERO!
-         </div>
-      </div>
-      <div class="col-md-4">
-         <label for="validationCustom01" class="form-label">BAIRRO</label>
-         <input name="bairro" type="text" class="form-control" id="validationCustom01" required="" placeholder="Digite o seu bairro">
-         <div class="invalid-feedback">
-            INSIRA O BAIRRO!
-         </div>
-      </div>
-      <div class="col-md-4">
-         <label for="validationCustom01" class="form-label">CIDADE</label>
-         <input name="cidade" type="text" class="form-control" id="validationCustom01" required="" placeholder="Digite a sua cidade">
-         <div class="invalid-feedback">
-            INSIRA A CIDADE!
-         </div>
-      </div>
-      <div class="col-md-4">
          <label for="validationCustom01" class="form-label">CELULAR</label>
          <input name="celular" type="text" class="form-control" id="validationCustom01" required="" placeholder="Digite o seu celular" maxlength="13" onkeypress="formatar('##-#####-####', this)">
          <div class="invalid-feedback">
             INSIRA O NUMERO DO CELULAR!
          </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-6">
          <label for="validationCustomUsername" class="form-label">EMAIL</label>
          <div class="input-group has-validation">
             <span class="input-group-text" id="inputGroupPrepend">@</span>
-            <input name="email" type="email" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required="">
+            <input name="email" type="email" class="form-control" id="validationCustomEmail" aria-describedby="inputGroupPrepend" required="">
             <div class="invalid-feedback">
                INSIRA O EMAIL
             </div>
          </div>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-6">
          <label for="validationCustom01" class="form-label">SENHA</label>
          <input name="senha" type="password" class="form-control" id="validationCustom01" required="" placeholder="Digite a sua senha">
          <div class="invalid-feedback">
             INSIRA A SENHA!
          </div>
       </div>
-      <div class="col-12">
-         <div class="form-check">
+      <div class="col-md-6">
+         <div class="form-check" id="form-check">
             <input class="form-input" type="checkbox" name="permissao_id_checkbox" id="permissao_id_checkbox">
             <label class="form-check-label" for="permissao_id">
             ADMINISTRADOR
