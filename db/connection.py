@@ -1,6 +1,6 @@
 def db_connect():
-    import psycopg2
-    connection = psycopg2.connect(
+    import mysql.connector
+    connection = mysql.connector.connect(
             host='localhost',
             user='postgres',
             password='8072',
@@ -8,4 +8,5 @@ def db_connect():
         )
     
     if connection:
+        print('Banco de dados conectado com sucesso!')
         return connection
