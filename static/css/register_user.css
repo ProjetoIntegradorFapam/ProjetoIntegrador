@@ -54,3 +54,6 @@
     display: inline-block;
 }
 
+.toast {
+    border: 3px solid var(--light-green);
+}

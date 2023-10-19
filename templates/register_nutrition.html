@@ -9,13 +9,13 @@
     <form action="/register_nutricionista" id="register_nutricionista_form" method="POST" class="row g-3 needs-validation was-validated">
       <div class="col-md-4">
          <label for="validationCustom01" class="form-label">CPF</label>
-         <input name="cpf" type="text" class="form-control" id="validationCustom01" required="" placeholder="Digite o seu cpf">
+         <input name="cpf" type="text" class="form-control" id="validationCustom01" required="" placeholder="Digite o seu cpf" maxlength="14" onkeypress="formatar('###.###.###-##', this)">
          <div class="invalid-feedback">
             INSIRA O CPF!
          </div>
       </div>
-      <div class="col-md-8">
-         <p>Usuário não encontrado</p>
+      <div class="col-md-8" id="search-button">
+         <a href="/procurar-cliente"><i class="fa-solid fa-magnifying-glass"></i></a>
       </div>
       <div class="col-md-4">
          <label for="validationCustom02" class="form-label">CFN</label>
@@ -29,5 +29,5 @@
 {% endblock %}
 
 {% block script %}
-    <script src="{{url_for('static', filename='js/register_nutricionista.js')}}"></script>
+    <script src="{{url_for('static', filename='js/register_user.js')}}"></script>
 {% endblock %}

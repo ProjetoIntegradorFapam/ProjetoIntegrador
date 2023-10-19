@@ -11,50 +11,50 @@
          <div class="col-md-6">
             <label for="validationCustom01" class="form-label">CPF</label>
             <input name="cpf" type="text"  class="form-control" id="validationCustom01" required="" placeholder="Digite o seu cpf" maxlength="14" onkeypress="formatar('###.###.###-##', this)" >
-            <div class="invalid-feedback">
+            <div class="valid-feedback">
                INSIRA O CPF!
             </div>
          </div>
          <div class="col-md-6">
             <label for="validationCustom02" class="form-label">NOME</label>
             <input name="nome" type="text" class="form-control" id="validationCustom02" required="" placeholder="Digite o seu nome">
-            <div class="invalid-feedback">
+            <div class="valid-feedback">
                INSIRA O NOME!
             </div>
          </div>
          <div class="col-md-6">
             <label for="validationCustom03" class="form-label">RUA</label>
             <input name="rua" type="text" class="form-control" id="validationCustom03" required="" placeholder="Digite a rua">
-            <div class="invalid-feedback">
+            <div class="valid-feedback">
                INSIRA A RUA!
             </div>
          </div>
          <div class="col-md-6">
             <label for="validationCustom01" class="form-label">NUMERO</label>
             <input name="numero" type="number" class="form-control" id="validationCustom01" required="" placeholder="Digite o seu numero">
-            <div class="invalid-feedback">
+            <div class="valid-feedback">
                INSIRA O NUMERO!
             </div>
          </div>
          <div class="col-md-6">
             <label for="validationCustom01" class="form-label">BAIRRO</label>
             <input name="bairro" type="text" class="form-control" id="validationCustom01" required="" placeholder="Digite o seu bairro">
-            <div class="invalid-feedback">
+            <div class="valid-feedback">
                INSIRA O BAIRRO!
             </div>
          </div>
          <div class="col-md-6">
             <label for="validationCustom01" class="form-label">CIDADE</label>
             <input name="cidade" type="text" class="form-control" id="validationCustom01" required="" placeholder="Digite a sua cidade">
-            <div class="invalid-feedback">
+            <div class="valid-feedback">
                INSIRA A CIDADE!
             </div>
          </div>
       </div>
       <div class="col-md-6">
          <label for="validationCustom01" class="form-label">CELULAR</label>
-         <input name="celular" type="text" class="form-control" id="validationCustom01" required="" placeholder="Digite o seu celular" maxlength="13" onkeypress="formatar('##-#####-####', this)">
-         <div class="invalid-feedback">
+         <input name="celular" class="form-control" id="validationCustom01" required="" placeholder="Digite o seu celular" type="tel" maxlength="15" onkeyup="handlePhone(event)">
+         <div class="valid-feedback">
             INSIRA O NUMERO DO CELULAR!
          </div>
       </div>
@@ -63,7 +63,7 @@
          <div class="input-group has-validation">
             <span class="input-group-text" id="inputGroupPrepend">@</span>
             <input name="email" type="email" class="form-control" id="validationCustomEmail" aria-describedby="inputGroupPrepend" required="">
-            <div class="invalid-feedback">
+            <div class="valid-feedback">
                INSIRA O EMAIL
             </div>
          </div>
@@ -71,7 +71,7 @@
       <div class="col-md-6">
          <label for="validationCustom01" class="form-label">SENHA</label>
          <input name="senha" type="password" class="form-control" id="validationCustom01" required="" placeholder="Digite a sua senha">
-         <div class="invalid-feedback">
+         <div class="valid-feedback">
             INSIRA A SENHA!
          </div>
       </div>
@@ -85,11 +85,24 @@
          </div>
       </div>
       <div class="col-12 text-center">
-         <button class="btn btn-success mx-auto" type="submit">CADASTRAR</button>
+         <button type="submit" class="btn btn-success" id="liveToastBtn">CADASTRAR</button>
       </div>
    </form>
+   
   </div>
 </div>
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+   <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+         <img src="{{url_for('static', filename='img/favicon.png')}}" class="rounded me-2" alt="..." width="5%" height="100%">
+         <strong class="me-auto">Notificação</strong>
+         <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body">
+         Usuário cadastrado com sucesso!
+      </div>
+   </div>
+   </div>
 {% endblock %}
 
 {% block script %}
