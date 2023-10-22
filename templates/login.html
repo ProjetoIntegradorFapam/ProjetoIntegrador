@@ -22,7 +22,7 @@
         <img class="position-relative top-0 start-50 translate-middle-x" src="{{url_for('static', filename='img/favicon.png')}}" alt="Logomarca">
         <div class="mb-3">
             <label for="cpf_input" class="form-label">CPF</label>
-            <input name="cpf" type="text" id="cpf_input" aria-describedby="cpfHelp" placeholder="000.000.000-00" oninput="mascara(this)" checked>
+            <input name="cpf" type="text" id="cpf_input" aria-describedby="cpfHelp" placeholder="000.000.000-00" maxlength="14" onkeypress="formatar('###.###.###-##', this)" checked>
         </div>
         <div class="mb-3">
           <label for="password_input" class="form-label">Senha</label>
@@ -36,6 +36,7 @@
       </form>
     </div>
 </section>
+<script src="{{url_for('static', filename='js/register_user.js')}}"></script>
 <script>
   function validate() {
 

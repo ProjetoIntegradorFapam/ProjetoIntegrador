@@ -6,103 +6,107 @@
 {% block body %}
 <div class="container-fluid content">
   <div class="register">
-    <form action="/register_user" id="register_user_form" method="POST" class="row g-3 needs-validation was-validated">
-      <div class="row">
-         <div class="col-md-6">
-            <label for="validationCustom01" class="form-label">CPF</label>
-            <input name="cpf" type="text"  class="form-control" id="validationCustom01" required="" placeholder="Digite o seu cpf" maxlength="14" onkeypress="formatar('###.###.###-##', this)" >
-            <div class="valid-feedback">
-               INSIRA O CPF!
-            </div>
-         </div>
-         <div class="col-md-6">
-            <label for="validationCustom02" class="form-label">NOME</label>
-            <input name="nome" type="text" class="form-control" id="validationCustom02" required="" placeholder="Digite o seu nome">
-            <div class="valid-feedback">
-               INSIRA O NOME!
-            </div>
-         </div>
-         <div class="col-md-6">
-            <label for="validationCustom03" class="form-label">RUA</label>
-            <input name="rua" type="text" class="form-control" id="validationCustom03" required="" placeholder="Digite a rua">
-            <div class="valid-feedback">
-               INSIRA A RUA!
-            </div>
-         </div>
-         <div class="col-md-6">
-            <label for="validationCustom01" class="form-label">NUMERO</label>
-            <input name="numero" type="number" class="form-control" id="validationCustom01" required="" placeholder="Digite o seu numero">
-            <div class="valid-feedback">
-               INSIRA O NUMERO!
-            </div>
-         </div>
-         <div class="col-md-6">
-            <label for="validationCustom01" class="form-label">BAIRRO</label>
-            <input name="bairro" type="text" class="form-control" id="validationCustom01" required="" placeholder="Digite o seu bairro">
-            <div class="valid-feedback">
-               INSIRA O BAIRRO!
-            </div>
-         </div>
-         <div class="col-md-6">
-            <label for="validationCustom01" class="form-label">CIDADE</label>
-            <input name="cidade" type="text" class="form-control" id="validationCustom01" required="" placeholder="Digite a sua cidade">
-            <div class="valid-feedback">
-               INSIRA A CIDADE!
-            </div>
+   <form class="row g-3 needs-validation" novalidate>
+      <div class="col-md-6">
+        <label for="validationNome" class="form-label">NOME</label>
+        <input name="nome" type="text" class="form-control" id="validationNome" value="" required>
+        <div class="invalid-feedback">
+          Insira o seu nome.
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="validationCPF" class="form-label">CPF</label>
+        <input name="cpf" type="text" class="form-control" id="validationCPF" value="" required placeholder="000.000.000-00" maxlength="14" onkeypress="formatar('###.###.###-##', this)">
+        <div class="invalid-feedback">
+         Insira o seu cpf.
+        </div>
+      </div>
+      <div class="col-md-6">
+         <label for="validationRua" class="form-label">RUA</label>
+         <input name="rua" type="text" class="form-control" id="validationRua" value="" required>
+         <div class="invalid-feedback">
+           Insira a sua rua.
          </div>
       </div>
       <div class="col-md-6">
-         <label for="validationCustom01" class="form-label">CELULAR</label>
-         <input name="celular" class="form-control" id="validationCustom01" required="" placeholder="Digite o seu celular" type="tel" maxlength="15" onkeyup="handlePhone(event)">
-         <div class="valid-feedback">
-            INSIRA O NUMERO DO CELULAR!
+         <label for="validationNumero" class="form-label">NÚMERO</label>
+         <input name="numero" type="number" class="form-control" id="validationNumero" value="" required>
+         <div class="invalid-feedback">
+           Insira o seu número residencial.
          </div>
       </div>
       <div class="col-md-6">
-         <label for="validationCustomUsername" class="form-label">EMAIL</label>
+         <label for="validationBairro" class="form-label">BAIRRO</label>
+         <input name="bairro" type="text" class="form-control" id="validationBairro" value="" required>
+         <div class="invalid-feedback">
+           Insira o seu bairro.
+         </div>
+      </div>
+      <div class="col-md-6">
+         <label for="validationCidade" class="form-label">CIDADE</label>
+         <input name="cidade" type="text" class="form-control" id="validationCidade" value="" required>
+         <div class="invalid-feedback">
+           Insira a sua cidade.
+         </div>
+      </div>
+      <div class="col-md-6">
+         <label for="validationCelular" class="form-label">CELULAR</label>
+         <input name="celular" class="form-control" id="validationCelular" required="" placeholder="(00) 00000-0000" type="tel" maxlength="15" onkeyup="handlePhone(event)">
+         <div class="invalid-feedback">
+            Insira o número do celular!
+         </div>
+      </div>
+      <div class="col-md-6">
+         <label for="validationEmail" class="form-label">EMAIL</label>
          <div class="input-group has-validation">
-            <span class="input-group-text" id="inputGroupPrepend">@</span>
-            <input name="email" type="email" class="form-control" id="validationCustomEmail" aria-describedby="inputGroupPrepend" required="">
-            <div class="valid-feedback">
-               INSIRA O EMAIL
-            </div>
+           <span class="input-group-text" id="inputGroupPrepend3">@</span>
+           <input type="text" class="form-control" id="validationEmail" aria-describedby="inputGroupPrepend3 validationEmailFeedback" required placeholder="exemplo@gmail.com">
+           <div id="validationEmailFeedback" class="invalid-feedback">
+             Insira o seu email.
+           </div>
          </div>
       </div>
-      <div class="col-md-6">
-         <label for="validationCustom01" class="form-label">SENHA</label>
-         <input name="senha" type="password" class="form-control" id="validationCustom01" required="" placeholder="Digite a sua senha">
-         <div class="valid-feedback">
-            INSIRA A SENHA!
+      <div class="col-md-12 hidden" id="password-field">
+         <label for="validationSenha" class="form-label">SENHA</label>
+         <input name="senha" type="text" class="form-control" id="validationSenha">
+         <div class="invalid-feedback">
+           Insira a sua senha.
          </div>
       </div>
-      <div class="col-md-6">
-         <div class="form-check" id="form-check">
-            <input class="form-input" type="checkbox" name="permissao_id_checkbox" id="permissao_id_checkbox">
-            <label class="form-check-label" for="permissao_id">
+      <div class="col-6">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="permissao_id_checkbox">
+          <input type="number" id="permissao_id" class="hidden">
+          <label class="form-check-label">
             ADMINISTRADOR
-            </label>
-            <input type="text" name="permissao_id" id="permissao_id" value="" style="display: none;">
-         </div>
+          </label>
+        </div>
       </div>
-      <div class="col-12 text-center">
-         <button type="submit" class="btn btn-success" id="liveToastBtn">CADASTRAR</button>
+      <div class="col-6">
+        <button class="btn" id="btn-submit" type="submit">CADASTRAR</button>
       </div>
-   </form>
-   
+    </form>
   </div>
 </div>
 <div class="toast-container position-fixed bottom-0 end-0 p-3">
    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
       <div class="toast-header">
-         <img src="{{url_for('static', filename='img/favicon.png')}}" class="rounded me-2" alt="..." width="5%" height="100%">
+         <img src="{{url_for('static', filename='img/favicon.png')}}" width="5%" height="100%" class="rounded me-2" alt="...">
          <strong class="me-auto">Notificação</strong>
          <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
       </div>
-      <div class="toast-body">
-         Usuário cadastrado com sucesso!
+   </div>
+   </div>
+{% with messages = get_flashed_messages(with_categories=true) %}
+   {% if messages %}
+      {% for category, message in messages %}
+      <div class="toast-body {{ category }}">
+         {{ message }}
       </div>
-   </div>
-   </div>
+      {% endfor %}
+   {% endif %}
+{% endwith %}
+
 {% endblock %}
 
 {% block script %}

@@ -9,24 +9,37 @@ bp = Blueprint('register_user', __name__)
 
 @bp.route('/register_user', methods=['GET','POST'])
 def render_user():
+
     if request.method == 'GET':
         return render_template('register_user.html')
     else:
-        cpf = str(request.form.get('cpf'))
+        cpf = str(request.form.get('cpf')).replace('.', '')
         nome = str(request.form.get('nome'))
         rua = str(request.form.get('rua'))
         numero = str(request.form.get('numero'))
         bairro = str(request.form.get('bairro'))
         cidade = str(request.form.get('cidade'))
-        celular = str(request.form.get('celular'))
+        celular = str(request.form.get('celular')).replace('(','')
         email = str(request.form.get('email'))
         permissao_id = str(request.form.get('permissao_id'))
         senha = str(request.form.get('senha'))
 
-        utils.insert_user(cpf, nome, rua, numero, bairro, cidade, celular, email, int(permissao_id), senha)
-        
-        flash('Falha ao efetuar o login!')
-        return redirect(url_for('home.home'))
+        #Cpf sem máscara
+        cpf = cpf.replace('-', '')
+        #Celular sem máscar
+        celular = celular.replace(')', '')
+        celular = celular.replace(' ','')
+        celular = celular.replace('-','')
+
+        register_user = utils.insert_user(cpf, nome, rua, numero, bairro, cidade, celular, email, int(permissao_id), senha)
+
+        if register_user == True:
+            flash('Usuário cadastrado com sucesso!', 'success')
+            return redirect('/register_user')
+        else:
+            flash('Não foi possível cadastrar o usuário!', 'error')
+            return redirect(url_for('register_user.render_user'))
+            
 
 
 
