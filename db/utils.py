@@ -103,3 +103,33 @@ def insert_user(cpf, nome, rua, numero, bairro, cidade, celular, email, permissa
         connection.close()
 
         return True
+
+
+def insert_clinic(cnpj, razao_social, rua, numero, bairro, cidade, celular, telefone, email):
+    
+    from db.connection import db_connect
+
+    connection = db_connect()
+    
+    #instanciando cursor
+    cursor = connection.cursor()
+
+    command = f"select cnpj from empresa where cnpj = '{cnpj}'"
+    cursor.execute(command)
+
+    response = cursor.fetchall()
+
+    if len(response) != 0:
+        return False
+    else:
+        command = f'INSERT INTO empresa (cnpj, razao_social, rua, numero, bairro, cidade, celular, telefone, email) values ("{cnpj}", "{razao_social}", "{rua}", {numero}, "{bairro}", "{cidade}","{celular}","{telefone}", "{email}")'
+    
+        cursor.execute(command)
+        
+        connection.commit()
+
+        cursor.close()
+
+        connection.close()
+
+        return True

@@ -1,0 +1,105 @@
+{% extends 'layout.html' %}
+{% block head %}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/register_clinic.css')}}">
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid content">
+  <div class="register">
+   <form class="row g-3 needs-validation" method="post" action="/register_clinic"   novalidate>
+      <div class="col-md-6">
+         <label for="validationCPF" class="form-label">CNPJ</label>
+         <input name="cnpj" type="text" class="form-control" id="validationCPF" value="" required placeholder="00.000.000/0000-00" maxlength="18" onkeypress="formatar('##.###.###/####-##', this)">
+         <div class="invalid-feedback">
+          Insira o seu CNPJ.
+         </div>
+       </div>
+      <div class="col-md-6">
+        <label for="validationNome" class="form-label">RAZÃO SOCIAL</label>
+        <input name="razao_social" type="text" class="form-control" id="validationNome" value="" required placeholder="Insira a Razão Social">
+        <div class="invalid-feedback">
+          Insira a razão social.
+        </div>
+      </div>
+      <div class="col-md-6">
+         <label for="validationRua" class="form-label">RUA</label>
+         <input name="rua" type="text" class="form-control" id="validationRua" value="" required placeholder="Insira a Rua">
+         <div class="invalid-feedback">
+           Insira a sua rua.
+         </div>
+      </div>
+      <div class="col-md-6">
+         <label for="validationNumero" class="form-label">NÚMERO</label>
+         <input name="numero" type="number" class="form-control" id="validationNumero" value="" required placeholder="Insira o numero">
+         <div class="invalid-feedback">
+           Insira o numero.
+         </div>
+      </div>
+      <div class="col-md-6">
+         <label for="validationBairro" class="form-label">BAIRRO</label>
+         <input name="bairro" type="text" class="form-control" id="validationBairro" value="" required placeholder="Insira o bairro">
+         <div class="invalid-feedback">
+           Insira o bairro.
+         </div>
+      </div>
+      <div class="col-md-6">
+         <label for="validationCidade" class="form-label">CIDADE</label>
+         <input name="cidade" type="text" class="form-control" id="validationCidade" value="" required>
+         <div class="invalid-feedback">
+           Insira a cidade.
+         </div>
+      </div>
+      <div class="col-md-6">
+         <label for="validationCelular" class="form-label">CELULAR</label>
+         <input name="celular" class="form-control" id="validationCelular" required="" placeholder="(00) 00000-0000" type="tel" minlength="15" maxlength="15" onkeyup="handlePhone(event)">
+         <div class="invalid-feedback">
+            Insira o celular!
+         </div>
+      </div>
+      <div class="col-md-6">
+        <label for="validationCelular" class="form-label">TELEFONE</label>
+        <input name="telefone" class="form-control" id="validationCelular" required="" placeholder="(00) 0000-0000" type="tel" minlength="14" maxlength="14" onkeyup="handlePhone(event)">
+        <div class="invalid-feedback">
+           Insira o telefone!
+        </div>
+     </div>
+      <div class="col-md-6">
+         <label for="validationEmail" class="form-label">EMAIL</label>
+         <div class="input-group has-validation">
+           <span class="input-group-text" id="inputGroupPrepend3">@</span>
+           <input type="text" class="form-control" id="validationEmail" aria-describedby="inputGroupPrepend3 validationEmailFeedback" required placeholder="exemplo@mail.com">
+           <div id="validationEmailFeedback" class="invalid-feedback">
+             Insira o email.
+           </div>
+         </div>
+      </div>
+      <div class="col-7">
+        <button class="btn" id="btn-submit" type="submit">CADASTRAR</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% set messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+     {% for category, message in messages %}
+     <div class="toast-container position-fixed bottom-0 end-0 p-3">
+      <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+         <div class="toast-header">
+            <img src="{{url_for('static', filename='img/favicon.png')}}" width="5%" height="100%" class="rounded me-2" alt="...">
+            <strong class="me-auto">Notificação</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+         </div>
+      </div>
+     <div class="toast-body {{ category }}">
+        {{ message }}
+     </div>
+    </div>
+     {% endfor %}
+  {% endif %}
+
+{% endblock %}
+
+{% block script %}
+    <script src="{{url_for('static', filename='js/register_clinic.js')}}"></script>
+{% endblock %}

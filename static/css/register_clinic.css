@@ -1,0 +1,96 @@
+.content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 70%;
+    height: 100vh;
+}
+
+.register {
+    margin-top: 7%;
+    background: var(--bg-grey);
+    padding: 2rem 3rem 2rem 3rem;
+    border: 1px solid var(--dark-green);
+    border-radius: 10px;
+}
+
+.form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem;
+    justify-items: center;
+    align-items: center;
+    height: 100%;
+}
+
+.form input[type='checkbox'] {
+    width: 1.3rem;
+    height: 1.3rem;
+}
+
+#btn-submit {
+    width: 200px;
+    height: 40px;
+    background: var(--light-green);
+    color: #f2f2f2;
+    border: 0;
+    margin-left: 61%;
+}
+
+#form-check {
+    justify-self: start;
+    margin-top: 10%;
+}
+
+#form-check-label {
+    font-size: 1.3rem;
+    margin-left: 10px;
+}
+
+.form-control {
+    width: 100%;
+    height: 50px;
+}
+
+#render_user_found {
+    display: inline-block;
+}
+
+.toast {
+    border: 3px solid var(--light-green);
+}
+
+.toast:not(.show) {
+    display: block;
+}
+
+.error {
+    color: var(--red);
+}
+
+.success {
+    color: var(--light-green);
+}
+
+input[type=number]::-webkit-inner-spin-button { 
+    -webkit-appearance: none;
+    
+}
+input[type=number] { 
+   -moz-appearance: textfield;
+   appearance: textfield;
+
+}
+
+#validationSenha {
+    width: 49%;
+}
+
+.hidden {
+    display: none;
+}
+
+.show {
+    display: block;
+}
