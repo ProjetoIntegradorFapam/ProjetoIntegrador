@@ -8,7 +8,7 @@
 }
 
 .register {
-    margin-top: 5%;
+    margin-top: 2%;
     background: var(--bg-grey);
     padding: 3rem 4rem 3rem 4rem;
     border: 1px solid var(--dark-green);
@@ -18,7 +18,7 @@
 .form {
     display: grid;
     grid-template-columns: 6fr 6fr;
-    grid-gap: rem;
+    grid-gap: 1rem;
     justify-items: center;
     align-items: center;
     height: 150%;
@@ -40,7 +40,7 @@
 }
 
 #btn-submit {
-    width: 100%;
+    width: 48%;
     background: var(--light-green);
     margin: 0 auto;
     align-self: center;
@@ -56,4 +56,8 @@
 
 #search-button {
     margin-top: 55px;
+}
+
+#submit-container {
+    margin-top: 50px;
 }

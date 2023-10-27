@@ -1,5 +1,5 @@
 #importação de bibliotecas, frameworks e microframeworks
-from flask import Flask, session
+from flask import Flask
 
 #importação de rotas
 from routes import login, home, register_user, register_nutrition, register_clinic

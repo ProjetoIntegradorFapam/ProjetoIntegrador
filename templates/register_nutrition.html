@@ -5,29 +5,36 @@
 
 {% block body %}
 <div class="container-fluid content">
-  <div class="register">
-    <form action="/register_nutricionista" id="register_nutricionista_form" method="POST" class="row g-3 needs-validation was-validated">
-      <div class="col-md-4">
+  <div class="register col-md-6">
+    <form action="/register_nutricionista" id="register_nutricionista_form" method="POST" class="row g-3 needs-validation" novalidate>
+      <div class="col-md-6">
          <label for="validationCustom01" class="form-label">CPF</label>
-         <input name="cpf" type="text" class="form-control" id="validationCustom01" required="" placeholder="Digite o seu cpf" maxlength="14" onkeypress="formatar('###.###.###-##', this)">
+         <input name="cpf" type="text" class="form-control" id="cpf" required="" value="" placeholder="Digite o seu cpf">
          <div class="invalid-feedback">
-            INSIRA O CPF!
+            Insira o CPF!
          </div>
       </div>
-      <div class="col-md-8" id="search-button">
-         <a href="/procurar-cliente"><i class="fa-solid fa-magnifying-glass"></i></a>
-      </div>
-      <div class="col-md-4">
+      <div class="col-md-6">
          <label for="validationCustom02" class="form-label">CFN</label>
          <input name="nome" type="text" class="form-control" id="validationCustom02" required="" placeholder="Digite o seu nome">
          <div class="invalid-feedback">
-            INSIRA O NOME!
+            Insira o cfn!
          </div>
       </div>
+
+      {% if cpf %}
+         <p id="cpf_response">{{cpf}}</p>
+      {% else %}
+         <p id="cpf_response"></p>
+      {% endif %}
+
+      <div class="col-12 text-center" id="submit-container">
+         <button class="btn btn-success mx-auto" id="btn-submit" type="submit">SALVAR</button>
+      </div> 
   </div>
 </div>
 {% endblock %}
 
 {% block script %}
-    <script src="{{url_for('static', filename='js/register_user.js')}}"></script>
+    <script src="{{url_for('static', filename='js/register_nutrition.js')}}"></script>
 {% endblock %}

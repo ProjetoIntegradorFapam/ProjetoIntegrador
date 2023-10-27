@@ -31,6 +31,42 @@ def select_users():
     #retornando dados da variável response
     return response
 
+def select_nutrition(cpf):
+    
+    from db.connection import db_connect
+
+    connection = db_connect()
+    
+    #instanciando cursor
+    cursor = connection.cursor()
+
+    #comando a ser utilizado
+    command = f'SELECT nome FROM usuario where cpf = "{cpf}"'
+
+    #executando comando
+    cursor.execute(command)
+
+    #Utilize "connection.commit()" para editar banco
+    #connection.commit()
+
+    #Utilize "cursor.fechtall()" para buscar dados.
+    #cursor.fechtall()
+
+    #armazenando dados do banco na variável response.
+    response = cursor.fetchall()
+
+    #encerrando cursor
+    cursor.close()
+
+    #encerrando conexão
+    connection.close()
+
+    #tratando verificação de dados
+    if len(response) == 0:
+        return False
+    else:
+        return response
+
 def select_user(cpf,senha):
 
     from db.connection import db_connect
@@ -104,7 +140,6 @@ def insert_user(cpf, nome, rua, numero, bairro, cidade, celular, email, permissa
 
         return True
 
-
 def insert_clinic(cnpj, razao_social, rua, numero, bairro, cidade, celular, telefone, email):
     
     from db.connection import db_connect
@@ -123,6 +158,35 @@ def insert_clinic(cnpj, razao_social, rua, numero, bairro, cidade, celular, tele
         return False
     else:
         command = f'INSERT INTO empresa (cnpj, razao_social, rua, numero, bairro, cidade, celular, telefone, email) values ("{cnpj}", "{razao_social}", "{rua}", {numero}, "{bairro}", "{cidade}","{celular}","{telefone}", "{email}")'
+    
+        cursor.execute(command)
+        
+        connection.commit()
+
+        cursor.close()
+
+        connection.close()
+
+        return True
+
+def insert_nutrition(cfn, cpf_ID):
+    
+    from db.connection import db_connect
+
+    connection = db_connect()
+    
+    #instanciando cursor
+    cursor = connection.cursor()
+
+    command = f"select cfn from usuario where cfn = '{cfn}'"
+    cursor.execute(command)
+
+    response = cursor.fetchall()
+
+    if len(response) != 0:
+        return False
+    else:
+        command = f'INSERT INTO nutricionista (cfn, cpf_id) values ("{cfn}", "{cpf_ID}")'
     
         cursor.execute(command)
         

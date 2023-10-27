@@ -1,6 +1,7 @@
 #importando bibliotecas, frameworks e microframeworks
 from flask import Blueprint, render_template, request, redirect, flash
 
+
 #instanciando "login" utilizando Blueprint (É OBRIGRATÓRIO utilizar "__name__" após o nome da view, ou seja, rota.)
 bp = Blueprint('login', __name__)
 
@@ -17,7 +18,7 @@ def login():
     return render_template('login.html')
   
   #Tratando rota "POST" para validar os dados e fazer o redirecionamento
-  elif request.method == "POST":
+  else:
 
     #importanto conexão com banco de dados
     from db import utils
@@ -37,5 +38,10 @@ def login():
       #Enviando mensagem de erro e fazendo o redirecionamento para a rota "/login"
       flash('Falha ao efetuar o login!')
       return redirect('/login')
-  else:
-    return
+
+
+# Rota de logout (se desejar)
+@bp.route('/logout')
+def logout():
+    logout_user()
+    return redirect('/login')
