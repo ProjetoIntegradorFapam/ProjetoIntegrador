@@ -46,11 +46,11 @@ document.addEventListener('DOMContentLoaded', function () {
     return value
   }
 
-const toastLiveExample = document.getElementById('liveToast')
+const toast = document.getElementsByClassName('toast')
 
-if (toastLiveExample) {
+if (toast) {
   setTimeout(() => {
-    toastLiveExample.style.display = 'none';
+    toast.style.display = 'none';
   },5000)
 }
 

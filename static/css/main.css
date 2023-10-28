@@ -75,6 +75,10 @@ i {
     left: 0px;
 }
 
+.navbar-brand:hover {
+    color: var(--light-theme-font);
+}
+
 .navbar-picture {
     width: 45px;
     height: 45px;

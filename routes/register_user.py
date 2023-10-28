@@ -42,7 +42,7 @@ def render_user():
                 flash('Usuário cadastrado com sucesso!','success')
                 return redirect(url_for('register_user.render_user'))
             else:
-                flash('Não foi possível cadastrar o usuário!','error')
+                flash('Usuário já está cadastrado no sistema!','error')
                 return redirect(url_for('register_user.render_user'))
     else:
         return redirect('/login')

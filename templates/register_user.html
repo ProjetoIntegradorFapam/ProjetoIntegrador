@@ -90,27 +90,23 @@
    </form>
   </div>
 </div>
-<<<<<<< HEAD
-<div class="toast-container position-fixed bottom-0 end-0 p-3">
-   <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-      <div class="toast-header">
-         <img src="{{url_for('static', filename='img/favicon.png')}}" width="5%" height="100%" class="rounded me-2" alt="...">
-         <strong class="me-auto">Notificação</strong>
-         <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-      </div>
-    </div>
-{% with messages = get_flashed_messages(with_categories=true) %}
+{% set messages = get_flashed_messages(with_categories=true) %}
    {% if messages %}
       {% for category, message in messages %}
-      <div class="toast-body {{ category }}">
-         {{ message }}
+      <div class="toast-container position-fixed bottom-0 end-0 p-3">
+         <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+              <img src="{{url_for('static', filename='img/favicon.png')}}" width="5%" height="100%" class="rounded me-2" alt="Logomarca">
+              <strong class="me-auto">Notificação</strong>
+              <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body {{category}}">
+              {{message}}
+            </div>
+          </div>
       </div>
       {% endfor %}
    {% endif %}
-{% endwith %}
-</div>
-=======
->>>>>>> 188ec500402ee303a055dcb4402a10e397319f70
 {% endblock %}
 
 {% block script %}
