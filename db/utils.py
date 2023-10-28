@@ -169,7 +169,7 @@ def insert_clinic(cnpj, razao_social, rua, numero, bairro, cidade, celular, tele
 
         return True
 
-def insert_nutrition(cfn, cpf_ID):
+def insert_nutrition(cfn, cpf):
     
     from db.connection import db_connect
 
@@ -178,7 +178,7 @@ def insert_nutrition(cfn, cpf_ID):
     #instanciando cursor
     cursor = connection.cursor()
 
-    command = f"select cfn from usuario where cfn = '{cfn}'"
+    command = f"select cfn from nutricionista where cfn = '{cfn}'"
     cursor.execute(command)
 
     response = cursor.fetchall()
@@ -186,7 +186,7 @@ def insert_nutrition(cfn, cpf_ID):
     if len(response) != 0:
         return False
     else:
-        command = f'INSERT INTO nutricionista (cfn, cpf_id) values ("{cfn}", "{cpf_ID}")'
+        command = f'INSERT INTO nutricionista (cfn, cpf) values ("{cfn}", "{cpf}")'
     
         cursor.execute(command)
         
