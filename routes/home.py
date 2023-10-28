@@ -14,7 +14,7 @@ def home():
   if user.isAuthenticated():
 
     #renderizando home e enviando os usuários do banco
-    return render_template('home.html')
+    return render_template('home.html', title='Página Inicial')
   else:
     #redireciona para login
     return redirect('/login')

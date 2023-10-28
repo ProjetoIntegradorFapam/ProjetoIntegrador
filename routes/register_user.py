@@ -16,7 +16,7 @@ def render_user():
     if user.isAuthenticated():
 
         if request.method == 'GET':
-            return render_template('register_user.html')
+            return render_template('register_user.html', title='Cadastro de usuário')
         else:
             cpf = str(request.form.get('cpf')).replace('.', '')
             nome = str(request.form.get('nome'))

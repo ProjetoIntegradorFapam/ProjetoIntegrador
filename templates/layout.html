@@ -19,7 +19,11 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand" href="/home">Página Inicial</a>
+            {% if title %}
+              <a class="navbar-brand">{{title}}</a>
+            {% else %}
+              <a class="navbar-brand">Clínica Nutricional</a>
+            {% endif %}
           </div>
           <a data-bs-toggle="offcanvas" href="#offcanvasProfile" role="button" aria-controls="offcanvasProfile">
             <img class="navbar-picture" src="{{url_for('static', filename='img/favicon.png')}}" alt="Profile picture">
@@ -38,7 +42,7 @@
                     <i class="fa-solid fa-pen-to-square"></i> Cadastro
                   </a>
                   <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="/register_user"><i class="fa-solid fa-user"></i> Cliente</a></li>
+                    <li><a class="dropdown-item" href="/register_user"><i class="fa-solid fa-user"></i> Usuário</a></li>
                     <li><a class="dropdown-item" href="/register_nutrition"><i class="fa-solid fa-apple-whole"></i> Nutricionista</a></li>
                     <li>
                   </ul>

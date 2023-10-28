@@ -16,7 +16,7 @@ def render_nutrition():
     if user.isAuthenticated():
 
         if request.method == 'GET':
-            return render_template('register_nutrition.html')
+            return render_template('register_nutrition.html', title='Cadastro de nutricionista')
         else:
             
             cpf = str(request.form.get('cpf')).replace('.', '')
@@ -31,7 +31,7 @@ def render_nutrition():
                 flash('Não foi possível cadastrar o usuário!','error')
                 return redirect(url_for('register_nutrition.render_nutrition'))
     else:
-        return redirect('/register_nutrition')
+        return redirect('/login')
 
 # Definir uma rota para a página inicial
 @bp.route('/search_nutrition/<cpf>', methods=['GET'])

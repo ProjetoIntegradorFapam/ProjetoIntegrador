@@ -12,7 +12,7 @@ def render_user():
 
     if user.isAuthenticated():
         if request.method == 'GET':
-            return render_template('register_clinic.html')
+            return render_template('register_clinic.html', title='Sobre | Cadastrar empresa')
         else:
             cnpj = str(request.form.get('cnpj')).replace(".","")
             cnpj = cnpj.replace("/","")
