@@ -1,59 +1,54 @@
 {% extends 'layout.html' %}
-{% block head %}
-    <link rel="stylesheet" href="{{url_for('static', filename='css/register_user.css')}}">
-{% endblock %}
 
 {% block body %}
 <div class="container-fluid content">
-  <div class="register">
+  <div class="register col-md-8">
     <form action="/register_user" id="register_user_form" method="POST" class="row g-3 needs-validation" novalidate>
-      <div class="row">
-         <div class="col-md-6">
-            <label for="cpf" class="form-label">CPF</label>
-            <input name="cpf" type="text"  class="form-control" id="cpf" required="" placeholder="Digite o seu cpf" maxlength="14" onkeypress="formatar('###.###.###-##', this)" >
-            <div class="invalid-feedback">
-               Insira o CPF!
-            </div>
+      <div class="col-md-6">
+         <label for="cpf" class="form-label">CPF</label>
+         <input name="cpf" type="text"  class="form-control" id="cpf" required="" placeholder="Digite o seu cpf" maxlength="14" onkeypress="formatar('###.###.###-##', this)" >
+         <div class="invalid-feedback">
+            Insira o CPF!
          </div>
-         <div class="col-md-6">
-            <label for="nome" class="form-label">NOME</label>
-            <input name="nome" type="text" class="form-control" id="nome" required="" placeholder="Digite o seu nome">
-            <div class="invalid-feedback">
-               Insira o nome!
-            </div>
+      </div>
+      <div class="col-md-6">
+         <label for="nome" class="form-label">NOME</label>
+         <input name="nome" type="text" class="form-control" id="nome" required="" placeholder="Digite o seu nome">
+         <div class="invalid-feedback">
+            Insira o nome!
          </div>
-         <div class="col-md-6">
-            <label for="rua" class="form-label">RUA</label>
-            <input name="rua" type="text" class="form-control" id="rua" required="" placeholder="Digite a rua">
-            <div class="invalid-feedback">
-               Insira!
-            </div>
+      </div>
+      <div class="col-md-6">
+         <label for="rua" class="form-label">RUA</label>
+         <input name="rua" type="text" class="form-control" id="rua" required="" placeholder="Digite a rua">
+         <div class="invalid-feedback">
+            Insira!
          </div>
-         <div class="col-md-6">
-            <label for="numero" class="form-label">NUMERO</label>
-            <input name="numero" type="number" class="form-control" id="numero" required="" placeholder="Digite o seu numero">
-            <div class="invalid-feedback">
-               Insira o Numero!
-            </div>
+      </div>
+      <div class="col-md-6">
+         <label for="numero" class="form-label">NUMERO</label>
+         <input name="numero" type="number" class="form-control" id="numero" required="" placeholder="Digite o seu numero">
+         <div class="invalid-feedback">
+            Insira o Numero!
          </div>
-         <div class="col-md-6">
-            <label for="bairro" class="form-label">BAIRRO</label>
-            <input name="bairro" type="text" class="form-control" id="bairro" required="" placeholder="Digite o seu bairro">
-            <div class="invalid-feedback">
-               Insira o Bairro!
-            </div>
+      </div>
+      <div class="col-md-6">
+         <label for="bairro" class="form-label">BAIRRO</label>
+         <input name="bairro" type="text" class="form-control" id="bairro" required="" placeholder="Digite o seu bairro">
+         <div class="invalid-feedback">
+            Insira o Bairro!
          </div>
-         <div class="col-md-6">
-            <label for="cidade" class="form-label">CIDADE</label>
-            <input name="cidade" type="text" class="form-control" id="cidade" required="" placeholder="Digite a sua cidade">
-            <div class="invalid-feedback">
-               Insira a Cidade!
-            </div>
+      </div>
+      <div class="col-md-6">
+         <label for="cidade" class="form-label">CIDADE</label>
+         <input name="cidade" type="text" class="form-control" id="cidade" required="" placeholder="Digite a sua cidade">
+         <div class="invalid-feedback">
+            Insira a Cidade!
          </div>
       </div>
       <div class="col-md-6">
          <label for="celular" class="form-label">CELULAR</label>
-         <input name="celular" type="text" class="form-control" id="celular" required="" placeholder="Digite o seu celular" maxlength="13" onkeypress="formatar('##-#####-####', this)">
+         <input name="celular" class="form-control" id="celular" required="" placeholder="(00) 00000-0000" type="tel" minlength="15" maxlength="15" onkeyup="handlePhone(event)">
          <div class="invalid-feedback">
             Insira o numero de Celular!
          </div>
@@ -75,17 +70,13 @@
             Insira a Senha!
          </div>
       </div>
-      <div class="col-md-6">
-         <div class="form-check" id="form-check">
-            <input class="form-input" type="checkbox" name="permissao_id_checkbox" id="permissao_id_checkbox">
-            <label class="form-check-label" for="permissao_id">
-            ADMINISTRADOR
-            </label>
-            <input type="text" name="permissao_id" id="permissao_id" value="" style="display: none;">
-         </div>
+      <div class="mb-3 form-check col-md-6">
+         <input type="checkbox" class="form-check-input" name="permissao_id_checkbox" id="permissao_id_checkbox">
+         <input type="hidden" name="permissao_id" id="permissao_id" value="">
+         <label class="form-check-label" for="permissao_id_checkbox">ADMINISTRADOR</label>
       </div>
       <div class="col-12 text-center">
-         <button class="btn btn-success mx-auto" type="submit">CADASTRAR</button>
+         <button class="btn mx-auto" type="submit">CADASTRAR</button>
       </div>
    </form>
   </div>
@@ -107,8 +98,4 @@
       </div>
       {% endfor %}
    {% endif %}
-{% endblock %}
-
-{% block script %}
-    <script src="{{url_for('static', filename='js/register_user.js')}}"></script>
 {% endblock %}

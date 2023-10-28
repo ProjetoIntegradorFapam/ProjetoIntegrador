@@ -1,11 +1,7 @@
 {% extends 'layout.html' %}
-{% block head %}
-    <link rel="stylesheet" href="{{url_for('static', filename='css/register_clinic.css')}}">
-{% endblock %}
-
 {% block body %}
 <div class="container-fluid content">
-  <div class="register">
+  <div class="register col-md-8">
    <form class="row g-3 needs-validation" method="post" action="/register_clinic"   novalidate>
       <div class="col-md-6">
          <label for="validationCPF" class="form-label">CNPJ</label>
@@ -73,16 +69,11 @@
            </div>
          </div>
       </div>
-      <div class="col-7">
-        <button class="btn" id="btn-submit" type="submit">CADASTRAR</button>
+      <div class="col-12 text-center">
+        <button class="btn mx-auto" type="submit">CADASTRAR</button>
       </div>
     </form>
   </div>
 </div>
 
-
-{% endblock %}
-
-{% block script %}
-    <script src="{{url_for('static', filename='js/register_clinic.js')}}"></script>
 {% endblock %}

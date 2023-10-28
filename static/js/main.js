@@ -1,3 +1,12 @@
+//altera opacidade de itens ul
+ul = document.getElementById('message')
+  
+if (ul) {
+    setTimeout(() => {
+    ul.style.opacity = '0'
+    },3000)
+}
+
 //Receber 0 ou 1 do checkbox para a coluna permissao_id no bd...
 document.addEventListener('DOMContentLoaded', function () {
     const permissao_id_checkbox = document.getElementById('permissao_id_checkbox');
@@ -21,36 +30,36 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 //Função para criar mascara em cpf e celular
-  function formatar(mascara, documento){
+function formatar(mascara, documento){
     var i = documento.value.length;
     var saida = mascara.substring(0,1);
     var texto = mascara.substring(i)
     
     if (texto.substring(0,1) != saida){
               documento.value += texto.substring(0,1);
-    }
-    
-  }
+    }    
+}
 
-  //Máscara de telefone para input 
-  const handlePhone = (event) => {
+//Máscara de telefone para input 
+const handlePhone = (event) => {
     let input = event.target
     input.value = phoneMask(input.value)
-  }
-  
-  const phoneMask = (value) => {
+}
+
+const phoneMask = (value) => {
     if (!value) return ""
     value = value.replace(/\D/g,'')
     value = value.replace(/(\d{2})(\d)/,"($1) $2")
     value = value.replace(/(\d)(\d{4})$/,"$1-$2")
     return value
-  }
+}
 
-const toastLiveExample = document.getElementById('liveToast')
+//alterando display dos toasts
+const toast = document.getElementById('toast')
 
-if (toastLiveExample) {
+if (toast) {
   setTimeout(() => {
-    toastLiveExample.style.display = 'none';
+    toast.style.display = 'none';
   },5000)
 }
 

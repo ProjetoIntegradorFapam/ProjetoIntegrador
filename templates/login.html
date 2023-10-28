@@ -19,62 +19,28 @@
     {% endif %}
     <div class="container">
       <form action="/login" method="POST" class="form position-absolute top-50 start-50 translate-middle" name="formulario">
+
         <img class="position-relative top-0 start-50 translate-middle-x" src="{{url_for('static', filename='img/favicon.png')}}" alt="Logomarca">
-        <div class="mb-3">
+        
+        <div class="col-md-12">
             <label for="cpf_input" class="form-label">CPF</label>
-            <input name="cpf" type="text" id="cpf_input" aria-describedby="cpfHelp" placeholder="000.000.000-00" maxlength="14" onkeypress="formatar('###.###.###-##', this)" checked>
+            <input class="form-control" name="cpf" type="text" id="cpf_input" aria-describedby="cpfHelp" placeholder="000.000.000-00" maxlength="14" onkeypress="formatar('###.###.###-##', this)" checked>
         </div>
-        <div class="mb-3">
+        <br>
+        <div class="col-md-12">
           <label for="password_input" class="form-label">Senha</label>
-          <input name="password" type="password" id="password_input" placeholder="Digite sua senha">
+          <input class="form-control" name="password" type="password" id="password_input" placeholder="Digite sua senha">
         </div>
-        <a id="forgotpass" class="text-center" href="/login/recuperar_senha">Esqueceu sua senha?</a><br>
+
+        <a id="forgotpass" class="text-center" href="/login/recuperar_senha">Esqueceu sua senha?</a>
+
         <button id="submit" type="submit" class="position-relative bottom-0 start-50 translate-middle" onclick="return validate()">ENTRAR</button>
-				<span role="alert" id="nameError" aria-hidden="true">
-					<i id="info_icon" class="fa-solid fa-circle-info"></i> Preencha todos os campos!
-				</span>
+        <span role="alert" id="nameError" aria-hidden="true">
+          <i id="info_icon" class="fa-solid fa-circle-info"></i>  Preencha todos os campos!
+        </span>
       </form>
+      
     </div>
 </section>
-<script src="{{url_for('static', filename='js/register_user.js')}}"></script>
-<script>
-  function validate() {
-
-    const cpf = document.getElementById("cpf_input");
-		const password = document.getElementById("password_input");
-    let valid = true;
-
-    if (!cpf.value) {
-      const nameError = document.getElementById("nameError");
-      nameError.classList.add("visible");
-      cpf.classList.add("invalid");
-      nameError.setAttribute("aria-hidden", false);
-      nameError.setAttribute("aria-invalid", true);
-    }
-
-		if (!password.value) {
-			const nameError = document.getElementById("nameError");
-      nameError.classList.add("visible");
-      password.classList.add("invalid");
-      nameError.setAttribute("aria-hidden", false);
-      nameError.setAttribute("aria-invalid", true);
-		}
-
-		setTimeout(() => {
-			const nameError = document.getElementById("nameError");
-			nameError.classList.remove("visible");
-			cpf.classList.remove("invalid");
-			password.classList.remove("invalid");
-			nameError.setAttribute("aria-hidden", true);
-			nameError.setAttribute("aria-invalid", false);
-		}, 5000);
-
-    if (cpf.value && password.value) {
-      return valid
-    } else {
-      return false
-    }
-  }
-
-</script>
+<script src="{{url_for('static', filename='js/login.js')}}"></script>
 {% endblock%}

@@ -13,6 +13,7 @@
 }
 
 #forgotpass {
+    margin-top: 10px;
     display: block;
     text-decoration: none;
     color: #000;
@@ -20,18 +21,22 @@
 
 .form {
     position: relative;
-    padding: 1rem;
+    padding: 1.5rem;
     background: #F5F5F5;
-    max-width: 20rem;
+    min-width: 25rem;
+    max-width: 25rem;
     border:3px solid var(--light-green);
     border-radius: 1rem;
     margin-top: 1rem;
 }
 
+.form input {
+    width: 500px;
+}
+
 form img {
-    border-radius: 1rem;
     padding: 0.5rem;
-    width: 5rem;
+    width: 10rem;
 }
 
 span {
