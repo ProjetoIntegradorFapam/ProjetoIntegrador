@@ -1,5 +1,8 @@
 #importando bibliotecas, frameworks e microframeworks
-from flask import Blueprint, render_template, request, jsonify
+from flask import Blueprint, render_template, request, jsonify, redirect
+
+#importando gerenciamento de autenticação do usuário
+from routes.login import user
 
 #importanto conexão com banco de dados
 from db import utils
@@ -9,7 +12,11 @@ bp = Blueprint('register_nutrition', __name__)
 
 @bp.route('/register_nutrition', methods=['GET','POST'])
 def render_nutrition():
-    return render_template('register_nutrition.html')
+
+    if user.isAuthenticated():
+        return render_template('register_nutrition.html')
+    else:
+        return redirect('/login')
 
 # Definir uma rota para a página inicial
 @bp.route('/search_nutrition/<cpf>', methods=['GET'])

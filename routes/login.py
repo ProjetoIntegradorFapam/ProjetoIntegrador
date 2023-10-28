@@ -1,6 +1,11 @@
 #importando bibliotecas, frameworks e microframeworks
 from flask import Blueprint, render_template, request, redirect, flash
 
+#importando loginManager
+from utils.loginManager import loginManager
+
+#instanciando loginManager
+user = loginManager()
 
 #instanciando "login" utilizando Blueprint (É OBRIGRATÓRIO utilizar "__name__" após o nome da view, ou seja, rota.)
 bp = Blueprint('login', __name__)
@@ -30,6 +35,9 @@ def login():
     #Validação dos dados (AVISO: USUÁRIO E SENHA PARA TESTES)
     if utils.select_user(cpf, senha) == True:
 
+      #autenticar usuário
+      user.authenticate()
+
       #fazendo o redirecionamento para a rota "/home"
       return redirect('/home')
 
@@ -43,5 +51,5 @@ def login():
 # Rota de logout (se desejar)
 @bp.route('/logout')
 def logout():
-    logout_user()
+    user.logout()
     return redirect('/login')
