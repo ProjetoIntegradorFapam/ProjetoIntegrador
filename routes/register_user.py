@@ -34,10 +34,10 @@ def render_user():
         register_user = utils.insert_user(cpf, nome, rua, numero, bairro, cidade, celular, email, int(permissao_id), senha)
 
         if register_user == True:
-            flash('Usuário cadastrado com sucesso!', 'success')
-            return redirect('/register_user')
+            flash('Usuário cadastrado com sucesso!','success')
+            return redirect(url_for('register_user.render_user'))
         else:
-            flash('Não foi possível cadastrar o usuário!', 'error')
+            flash('Não foi possível cadastrar o usuário!','error')
             return redirect(url_for('register_user.render_user'))
             
 
