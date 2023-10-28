@@ -40,8 +40,5 @@ def render_user():
             flash('Não foi possível cadastrar o usuário!','error')
             return redirect(url_for('register_user.render_user'))
             
-
-
-
 # @bp.route('/register_user', methods=['POST'])
 # def insert_user():

@@ -1,8 +1,8 @@
 #importação de bibliotecas, frameworks e microframeworks
-from flask import Flask, session
+from flask import Flask
 
 #importação de rotas
-from routes import login, home, register_user, register_nutrition
+from routes import login, home, register_user, register_nutrition, register_clinic
 
 #instanciando flask
 app = Flask(__name__)
@@ -15,6 +15,7 @@ app.register_blueprint(login.bp)
 app.register_blueprint(home.bp)
 app.register_blueprint(register_user.bp)
 app.register_blueprint(register_nutrition.bp)
+app.register_blueprint(register_clinic.bp)
 
 #verificando se está em ambiente de desenvolvimento
 if __name__ == "__main__":
