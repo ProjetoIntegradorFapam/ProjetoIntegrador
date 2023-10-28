@@ -9,68 +9,68 @@
     <form action="/register_user" id="register_user_form" method="POST" class="row g-3 needs-validation" novalidate>
       <div class="row">
          <div class="col-md-6">
-            <label for="validationCustom01" class="form-label">CPF</label>
-            <input name="cpf" type="text"  class="form-control" id="validationCustom01" required="" placeholder="Digite o seu cpf" maxlength="14" onkeypress="formatar('###.###.###-##', this)" >
+            <label for="cpf" class="form-label">CPF</label>
+            <input name="cpf" type="text"  class="form-control" id="cpf" required="" placeholder="Digite o seu cpf" maxlength="14" onkeypress="formatar('###.###.###-##', this)" >
             <div class="invalid-feedback">
                Insira o CPF!
             </div>
          </div>
          <div class="col-md-6">
-            <label for="validationCustom02" class="form-label">NOME</label>
-            <input name="nome" type="text" class="form-control" id="validationCustom02" required="" placeholder="Digite o seu nome">
+            <label for="nome" class="form-label">NOME</label>
+            <input name="nome" type="text" class="form-control" id="nome" required="" placeholder="Digite o seu nome">
             <div class="invalid-feedback">
                Insira o nome!
             </div>
          </div>
          <div class="col-md-6">
-            <label for="validationCustom03" class="form-label">RUA</label>
-            <input name="rua" type="text" class="form-control" id="validationCustom03" required="" placeholder="Digite a rua">
+            <label for="rua" class="form-label">RUA</label>
+            <input name="rua" type="text" class="form-control" id="rua" required="" placeholder="Digite a rua">
             <div class="invalid-feedback">
                Insira!
             </div>
          </div>
          <div class="col-md-6">
-            <label for="validationCustom01" class="form-label">NUMERO</label>
-            <input name="numero" type="number" class="form-control" id="validationCustom01" required="" placeholder="Digite o seu numero">
+            <label for="numero" class="form-label">NUMERO</label>
+            <input name="numero" type="number" class="form-control" id="numero" required="" placeholder="Digite o seu numero">
             <div class="invalid-feedback">
                Insira o Numero!
             </div>
          </div>
          <div class="col-md-6">
-            <label for="validationCustom01" class="form-label">BAIRRO</label>
-            <input name="bairro" type="text" class="form-control" id="validationCustom01" required="" placeholder="Digite o seu bairro">
+            <label for="bairro" class="form-label">BAIRRO</label>
+            <input name="bairro" type="text" class="form-control" id="bairro" required="" placeholder="Digite o seu bairro">
             <div class="invalid-feedback">
                Insira o Bairro!
             </div>
          </div>
          <div class="col-md-6">
-            <label for="validationCustom01" class="form-label">CIDADE</label>
-            <input name="cidade" type="text" class="form-control" id="validationCustom01" required="" placeholder="Digite a sua cidade">
+            <label for="cidade" class="form-label">CIDADE</label>
+            <input name="cidade" type="text" class="form-control" id="cidade" required="" placeholder="Digite a sua cidade">
             <div class="invalid-feedback">
                Insira a Cidade!
             </div>
          </div>
       </div>
       <div class="col-md-6">
-         <label for="validationCustom01" class="form-label">CELULAR</label>
-         <input name="celular" type="text" class="form-control" id="validationCustom01" required="" placeholder="Digite o seu celular" maxlength="13" onkeypress="formatar('##-#####-####', this)">
+         <label for="celular" class="form-label">CELULAR</label>
+         <input name="celular" type="text" class="form-control" id="celular" required="" placeholder="Digite o seu celular" maxlength="13" onkeypress="formatar('##-#####-####', this)">
          <div class="invalid-feedback">
             Insira o numero de Celular!
          </div>
       </div>
       <div class="col-md-6">
-         <label for="validationCustomUsername" class="form-label">EMAIL</label>
+         <label for="email" class="form-label">EMAIL</label>
          <div class="input-group has-validation">
             <span class="input-group-text" id="inputGroupPrepend">@</span>
-            <input name="email" type="email" class="form-control" id="validationCustomEmail" aria-describedby="inputGroupPrepend" required="" placeholder="Digite seu email">
+            <input name="email" type="email" class="form-control" id="email" aria-describedby="inputGroupPrepend" required="" placeholder="Digite seu email">
             <div class="invalid-feedback">
                Insira o Email!
             </div>
          </div>
       </div>
       <div class="col-md-6">
-         <label for="validationCustom01" class="form-label">SENHA</label>
-         <input name="senha" type="password" class="form-control" id="validationCustom01" required="" placeholder="Digite a sua senha">
+         <label for="senha" class="form-label">SENHA</label>
+         <input name="senha" type="password" class="form-control" id="senha" required="" placeholder="Digite a sua senha">
          <div class="invalid-feedback">
             Insira a Senha!
          </div>
@@ -93,7 +93,7 @@
 {% set messages = get_flashed_messages(with_categories=true) %}
    {% if messages %}
       {% for category, message in messages %}
-      <div class="toast-container position-fixed bottom-0 end-0 p-3">
+      <div class="toast-container position-fixed bottom-0 end-0 p-3" id="toast">
          <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="toast-header">
               <img src="{{url_for('static', filename='img/favicon.png')}}" width="5%" height="100%" class="rounded me-2" alt="Logomarca">

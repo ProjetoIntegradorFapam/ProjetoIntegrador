@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
     return value
   }
 
-const toast = document.getElementsByClassName('toast')
+const toast = document.getElementById('toast')
 
 if (toast) {
   setTimeout(() => {
