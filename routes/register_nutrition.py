@@ -1,5 +1,5 @@
 #importando bibliotecas, frameworks e microframeworks
-from flask import Blueprint, render_template, request, jsonify, redirect
+from flask import Blueprint, render_template, request, jsonify, redirect, flash, url_for
 
 #importando gerenciamento de autenticação do usuário
 from routes.login import user
@@ -14,9 +14,24 @@ bp = Blueprint('register_nutrition', __name__)
 def render_nutrition():
 
     if user.isAuthenticated():
-        return render_template('register_nutrition.html')
+
+        if request.method == 'GET':
+            return render_template('register_nutrition.html')
+        else:
+            
+            cpf = str(request.form.get('cpf')).replace('.', '')
+            cfn = str(request.form.get('cfn'))
+            
+            register_nutrition = utils.insert_nutrition(cfn, cpf)
+
+            if register_nutrition == True:
+                flash('Usuário cadastrado com sucesso!','success')
+                return redirect(url_for('register_nutrition.render_nutrition'))
+            else:
+                flash('Não foi possível cadastrar o usuário!','error')
+                return redirect(url_for('register_nutrition.render_nutrition'))
     else:
-        return redirect('/login')
+        return redirect('/register_nutrition')
 
 # Definir uma rota para a página inicial
 @bp.route('/search_nutrition/<cpf>', methods=['GET'])

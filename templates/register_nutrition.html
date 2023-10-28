@@ -6,7 +6,7 @@
 {% block body %}
 <div class="container-fluid content">
   <div class="register col-md-6">
-    <form action="/register_nutricionista" id="register_nutricionista_form" method="POST" class="row g-3 needs-validation" novalidate>
+    <form action="/register_nutrition" id="register_nutrition_form" method="POST" class="row g-3 needs-validation" novalidate>
       <div class="col-md-6">
          <label for="validationCustom01" class="form-label">CPF</label>
          <input onkeyup="search_user()" name="cpf" type="text" class="form-control" id="cpf" required="" value="" placeholder="Digite o seu cpf">
@@ -16,7 +16,7 @@
       </div>
       <div class="col-md-6">
          <label for="validationCustom02" class="form-label">CFN</label>
-         <input name="nome" type="text" class="form-control" id="validationCustom02" required="" placeholder="Digite o seu nome">
+         <input name="cfn" type="text" class="form-control" id="validationCustom02" required="" placeholder="Digite o cfn">
          <div class="invalid-feedback">
             Insira o cfn!
          </div>
