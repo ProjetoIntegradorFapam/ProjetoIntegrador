@@ -9,7 +9,7 @@
     <form action="/register_nutricionista" id="register_nutricionista_form" method="POST" class="row g-3 needs-validation" novalidate>
       <div class="col-md-6">
          <label for="validationCustom01" class="form-label">CPF</label>
-         <input name="cpf" type="text" class="form-control" id="cpf" required="" value="" placeholder="Digite o seu cpf">
+         <input onkeyup="search_user()" name="cpf" type="text" class="form-control" id="cpf" required="" value="" placeholder="Digite o seu cpf">
          <div class="invalid-feedback">
             Insira o CPF!
          </div>
@@ -22,11 +22,7 @@
          </div>
       </div>
 
-      {% if cpf %}
-         <p id="cpf_response">{{cpf}}</p>
-      {% else %}
-         <p id="cpf_response"></p>
-      {% endif %}
+      <p id="username_response"></p>
 
       <div class="col-12 text-center" id="submit-container">
          <button class="btn btn-success mx-auto" id="btn-submit" type="submit">SALVAR</button>

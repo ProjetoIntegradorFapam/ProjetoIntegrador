@@ -41,7 +41,7 @@ def select_nutrition(cpf):
     cursor = connection.cursor()
 
     #comando a ser utilizado
-    command = f'SELECT nome FROM usuario where cpf = "{cpf}"'
+    command = f'SELECT nome FROM usuario WHERE cpf = "{cpf}"'
 
     #executando comando
     cursor.execute(command)
