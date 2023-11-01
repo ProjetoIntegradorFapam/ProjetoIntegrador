@@ -63,20 +63,22 @@ const themeButton = document.getElementById("theme-button")
 themeButton.addEventListener("change", function() {
   //Alterando tema com checkbox
   let element = document.documentElement;
-  let logo_dark = document.getElementById("theme-logo-dark")
-  let logo_light = document.getElementById("theme-logo-light")
+  let logo = document.getElementsByClassName("logo")
+  let menu_logo = document.getElementById("menu_logo")
 
   // Acesse o atributo data-bs-theme usando dataset
   let dataTheme = element.dataset.bsTheme;
 
-  // Verifique se o valor do atributo é "dark"
-  if (dataTheme === 'light' && themeButton.checked) {
-    element.dataset.bsTheme = 'dark';
-    logo_dark.style.display = "block";
-    logo_light.style.display = "none";
-  } else {
-    element.dataset.bsTheme = 'light';
-    logo_light.style.display = "block";
-    logo_dark.style.display = "none";
+  for ( item of logo ) {
+    // Verifique se o valor do atributo é "dark"
+    if (dataTheme === 'light' && themeButton.checked) {
+      element.dataset.bsTheme = 'dark';
+      item.src = "../static/img/favicon_dark.png";
+      menu_logo.src = "../static/img/favicon_dark.png"
+    } else {
+      element.dataset.bsTheme = 'light';
+      item.src = "../static/img/favicon.png"
+      menu_logo.src = "../static/img/favicon.png"
+    }
   }
 }) 
