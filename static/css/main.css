@@ -10,6 +10,7 @@
     --light-theme-bg: #fff;
     --dark-green: #2D4F34;
     --black: #000;
+    --grey: #ccc;
 }
 
 .content {
@@ -106,6 +107,11 @@ input[type='checkbox']:hover {
 
 i {
     color: var(--orange);
+}
+
+.icon-animation:hover {
+    cursor: pointer;
+    transform: scale(1.1);
 }
 
 /*Estilização do layout*/
@@ -230,4 +236,34 @@ display: none;
 
 .show {
 display: block;
+}
+
+.user_card {
+    display:flex;
+    align-items: center;
+    background: var(--grey);
+    border-radius: 5px;
+    min-height: 50px;
+    margin-bottom: 10px;
+}
+
+.card_content {
+    display: flex;
+    justify-content: end;
+}
+
+.card_icon, .card_title {
+    padding: 0.5rem;
+}
+
+.dark-green {
+    color: var(--dark-green);
+}
+
+.blue {
+    color: var(--blue);
+}
+
+.red {
+    color: var(--red);
 }

@@ -8,7 +8,7 @@ def select_users():
     cursor = connection.cursor()
 
     #comando a ser utilizado
-    command = 'SELECT * FROM usuario'
+    command = 'SELECT nome FROM usuario'
 
     #executando comando
     cursor.execute(command)

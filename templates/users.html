@@ -1,0 +1,57 @@
+{% extends 'layout.html' %}
+{% block head %}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/users.css')}}">
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid content">
+    <div class="col-md-12" id="users_register">
+        <div class="header col-md-12">
+
+            <div class="col-md-6">
+                <div id="header_register_button" onclick='location.href="/register_user"'>
+                    <div id="header_register_title">
+                        Adicionar Usuário
+                        <i class="fa-solid fa-circle-plus fa-xl"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div id="header_search_button">
+                    <div id="header_search_input">
+                        <input type="text" name="user" placeholder="Consultar usuário" id="search_input">
+                        <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        {% if users %}
+            {% for user in users %}
+                <div class="user_card">
+                    <div class="card_title col-md-6">
+                        {{user[0]}}
+                    </div>
+                    <div class="card_content col-md-6">
+                        <div class="card_icon">
+                            <i class="fa-solid fa-utensils fa-lg icon-animation dark-green"></i>
+                        </div>
+                        <div class="card_icon">
+                            <i class="fa-solid fa-pencil fa-lg icon-animation blue"></i>
+                        </div>
+                        <div class="card_icon">
+                            <i class="fa-solid fa-trash fa-lg icon-animation red"></i>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+        <div class="user_not_found">
+            Nenhum usuário encontrado!
+        </div>
+        {% endif %}
+    </div>
+  </div>
+{% endblock %}
+
