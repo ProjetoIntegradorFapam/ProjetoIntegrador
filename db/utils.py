@@ -1,4 +1,4 @@
-def select_users():
+def select_users(cpf):
     
     from db.connection import db_connect
 
@@ -7,8 +7,12 @@ def select_users():
     #instanciando cursor
     cursor = connection.cursor()
 
-    #comando a ser utilizado
-    command = 'SELECT nome FROM usuario'
+    if cpf:
+        #comando a ser utilizado
+        command = f'SELECT nome FROM usuario where cpf = "{cpf}"'
+    else:
+        #comando a ser utilizado
+        command = f'SELECT nome FROM usuario'
 
     #executando comando
     cursor.execute(command)
@@ -270,7 +274,7 @@ def select_clinic_all(cnpj, razao_social, rua, numero, bairro, cidade, celular, 
     else:
         return response
 
-def update_user(rua, numero, bairro, cidade, celular, email):
+def update_user(cpf, rua, numero, bairro, cidade, celular, email):
     from db.connection import db_connect
 
     connection = db_connect()
@@ -286,7 +290,7 @@ def update_user(rua, numero, bairro, cidade, celular, email):
     if len(response) != 0:
         return False
     else:
-        command = f'update usuario set rua = "{rua}" and numero = {numero} and bairro = "{bairro}" and cidade = "{cidade}" and celular = "{celular}" and email = "{email}"'
+        command = f'update usuario set rua = "{rua}" and numero = {numero} and bairro = "{bairro}" and cidade = "{cidade}" and celular = "{celular}" and email = "{email}" where cpf = "{cpf}"'
     
         cursor.execute(command)
         
@@ -298,7 +302,7 @@ def update_user(rua, numero, bairro, cidade, celular, email):
 
         return True
 
-def update_clinic(rua, numero, bairro, cidade, celular, telefone, email):
+def update_clinic(cnpj, rua, numero, bairro, cidade, celular, telefone, email):
     from db.connection import db_connect
 
     connection = db_connect()
@@ -314,7 +318,7 @@ def update_clinic(rua, numero, bairro, cidade, celular, telefone, email):
     if len(response) != 0:
         return False
     else:
-        command = f'update empresa set rua = "{rua}" and numero = {numero} and bairro = "{bairro}" and cidade = "{cidade}" and celular = "{celular}" and telefone = "{telefone}" and email = "{email}"'
+        command = f'update empresa set rua = "{rua}" and numero = {numero} and bairro = "{bairro}" and cidade = "{cidade}" and celular = "{celular}" and telefone = "{telefone}" and email = "{email}" where cnpj = "{cnpj}"'
     
         cursor.execute(command)
         

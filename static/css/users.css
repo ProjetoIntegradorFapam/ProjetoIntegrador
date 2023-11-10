@@ -1,6 +1,15 @@
 #users_register {
     padding: 1rem 2rem 1rem 2rem;
-    margin-top: -100px;
+    margin-top: 70px;
+}
+
+.content2 {
+    display: flex;
+    flex-direction: row;
+    align-items: top;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
 }
 
 .header, #header_register_button, #header_search_button {
@@ -17,7 +26,7 @@
 
 #header_register_button:hover {
     cursor: pointer;
-    transform: scale(1.1);
+    transform: scale(1.02);
 }
 
 #search_input {
@@ -33,9 +42,4 @@
     border-radius: 5px;
     background: var(--grey);
     float: right;
-}
-
-#header_search_button:hover {
-    cursor: pointer;
-    transform: scale(1.1);
 }
