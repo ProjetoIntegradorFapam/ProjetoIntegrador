@@ -7,37 +7,15 @@ if (ul) {
     },3000)
 }
 
-//Receber 0 ou 1 do checkbox para a coluna permissao_id no bd...
-document.addEventListener('DOMContentLoaded', function () {
-    const permissao_id_checkbox = document.getElementById('permissao_id_checkbox');
-    const permissao_id = document.getElementById('permissao_id');
-    
-    //acionando campo senha
-    const password_field = document.getElementById('password-field')
-
-    permissao_id_checkbox.addEventListener('change', function () {
-      if (permissao_id_checkbox.checked) {
-        permissao_id.value = '1';
-        password_field.classList.remove('hidden')
-        password_field.classList.add('show')
-      } else {
-        permissao_id.value = '0';
-        password_field.classList.remove('show')
-        password_field.classList.add('hidden')
-      }
-    });
-    permissao_id.value = permissao_id_checkbox.checked ? '1' : '0';
-});
-
 //Função para criar mascara em cpf e celular
 function formatar(mascara, documento){
-    var i = documento.value.length;
-    var saida = mascara.substring(0,1);
-    var texto = mascara.substring(i)
-    
-    if (texto.substring(0,1) != saida){
-              documento.value += texto.substring(0,1);
-    }    
+  let i = documento.value.length;
+  let saida = mascara.substring(0,1);
+  let texto = mascara.substring(i)
+  
+  if (texto.substring(0,1) != saida){
+            documento.value += texto.substring(0,1);
+  }    
 }
 
 //Máscara de telefone para input 
@@ -47,11 +25,11 @@ const handlePhone = (event) => {
 }
 
 const phoneMask = (value) => {
-    if (!value) return ""
-    value = value.replace(/\D/g,'')
-    value = value.replace(/(\d{2})(\d)/,"($1) $2")
-    value = value.replace(/(\d)(\d{4})$/,"$1-$2")
-    return value
+  if (!value) return ""
+  value = value.replace(/\D/g,'')
+  value = value.replace(/(\d{2})(\d)/,"($1) $2")
+  value = value.replace(/(\d)(\d{4})$/,"$1-$2")
+  return value
 }
 
 //alterando display dos toasts
@@ -77,3 +55,30 @@ Array.from(forms).forEach(form => {
     form.classList.add('was-validated')
   }, false)
 })
+
+
+//alterando tema
+const themeButton = document.getElementById("theme-button")
+
+themeButton.addEventListener("change", function() {
+  //Alterando tema com checkbox
+  let element = document.documentElement;
+  let logo = document.getElementsByClassName("logo")
+  let menu_logo = document.getElementById("menu_logo")
+
+  // Acesse o atributo data-bs-theme usando dataset
+  let dataTheme = element.dataset.bsTheme;
+
+  for ( item of logo ) {
+    // Verifique se o valor do atributo é "dark"
+    if (dataTheme === 'light' && themeButton.checked) {
+      element.dataset.bsTheme = 'dark';
+      item.src = "../static/img/favicon_dark.png";
+      menu_logo.src = "../static/img/favicon_dark.png"
+    } else {
+      element.dataset.bsTheme = 'light';
+      item.src = "../static/img/favicon.png"
+      menu_logo.src = "../static/img/favicon.png"
+    }
+  }
+}) 

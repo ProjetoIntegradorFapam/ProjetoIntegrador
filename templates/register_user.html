@@ -99,3 +99,7 @@
       {% endfor %}
    {% endif %}
 {% endblock %}
+
+{% block script %}
+<script src="{{url_for('static', filename='js/register_user.js')}}"></script>
+{% endblock %}
