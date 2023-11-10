@@ -197,3 +197,131 @@ def insert_nutrition(cfn, cpf):
         connection.close()
 
         return True
+
+def select_user_all(cpf, nome, rua, numero, bairro, cidade, celular, email):
+
+    from db.connection import db_connect
+
+    connection = db_connect()
+    
+    #instanciando cursor
+    cursor = connection.cursor()
+
+    #comando a ser utilizado
+    command = f'SELECT cpf, nome, rua, numero, bairro, cidade, celular, email FROM usuario WHERE cpf = "{cpf}" and nome = "{nome}", and rua = "{rua}" and numero = {numero} and bairro = "{bairro}, "{cidade}" and celular = "{celular}" and email = "{email}" ' 
+
+    #executando comando
+    cursor.execute(command)
+
+    #Utilize "connection.commit()" para editar banco
+    #connection.commit()
+
+    #Utilize "cursor.fechtall()" para buscar dados.
+    #cursor.fechtall()
+
+    #armazenando dados do banco na variável response.
+    response = cursor.fetchall()
+
+    #encerrando cursor
+    cursor.close()
+
+    #encerrando conexão
+    connection.close()
+
+    #tratando verificação de dados
+    if len(response) == 0:
+        return False
+    else:
+        return response
+
+def select_clinic_all(cnpj, razao_social, rua, numero, bairro, cidade, celular, telefone, email):
+    
+    from db.connection import db_connect
+
+    connection = db_connect()
+    
+    #instanciando cursor
+    cursor = connection.cursor()
+
+    #comando a ser utilizado
+    command = f'SELECT cnpj, razao_social, rua, numero, bairro, cidade, celular, telefone, email FROM empresa WHERE cnpj = "{cnpj}" and razao_social = "{razao_social}" and rua = "{rua}" and numero = {numero} and bairro = "{bairro}" and cidade = "{cidade}" and telefone = "{telefone}" and email = "{email}"'
+
+    #executando comando
+    cursor.execute(command)
+
+    #Utilize "connection.commit()" para editar banco
+    #connection.commit()
+
+    #Utilize "cursor.fechtall()" para buscar dados.
+    #cursor.fechtall()
+
+    #armazenando dados do banco na variável response.
+    response = cursor.fetchall()
+
+    #encerrando cursor
+    cursor.close()
+
+    #encerrando conexão
+    connection.close()
+
+    #tratando verificação de dados
+    if len(response) == 0:
+        return False
+    else:
+        return response
+
+def update_user(rua, numero, bairro, cidade, celular, email):
+    from db.connection import db_connect
+
+    connection = db_connect()
+    
+    #instanciando cursor
+    cursor = connection.cursor()
+
+    command = f"select cpf from usuario where cpf = '{cpf}'"
+    cursor.execute(command)
+
+    response = cursor.fetchall()
+
+    if len(response) != 0:
+        return False
+    else:
+        command = f'update usuario set rua = "{rua}" and numero = {numero} and bairro = "{bairro}" and cidade = "{cidade}" and celular = "{celular}" and email = "{email}"'
+    
+        cursor.execute(command)
+        
+        connection.commit()
+
+        cursor.close()
+
+        connection.close()
+
+        return True
+
+def update_clinic(rua, numero, bairro, cidade, celular, telefone, email):
+    from db.connection import db_connect
+
+    connection = db_connect()
+    
+    #instanciando cursor
+    cursor = connection.cursor()
+
+    command = f"select cnpj from empresa where cnpj = '{cnpj}'"
+    cursor.execute(command)
+
+    response = cursor.fetchall()
+
+    if len(response) != 0:
+        return False
+    else:
+        command = f'update empresa set rua = "{rua}" and numero = {numero} and bairro = "{bairro}" and cidade = "{cidade}" and celular = "{celular}" and telefone = "{telefone}" and email = "{email}"'
+    
+        cursor.execute(command)
+        
+        connection.commit()
+
+        cursor.close()
+
+        connection.close()
+
+        return True
