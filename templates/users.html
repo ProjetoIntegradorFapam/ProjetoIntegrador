@@ -12,7 +12,7 @@
                 <div id="header_register_button" onclick='location.href="/register_user"'>
                     <div id="header_register_title">
                         Adicionar Usuário
-                        <i class="fa-solid fa-circle-plus fa-xl"></i>
+                        <i id="search_icon" class="fa-solid fa-circle-plus fa-xl"></i>
                     </div>
                 </div>
             </div>
@@ -31,18 +31,19 @@
             {% for user in users %}
                 <div class="user_card">
                     <div class="card_title col-md-6">
-                        {{user[0]}}
+                        {{user[1]}}
                     </div>
                     <div class="card_content col-md-6">
                         <div class="card_icon">
-                            <i class="fa-solid fa-utensils fa-lg icon-animation dark-green"></i>
+                            <i class="fa-solid fa-utensils fa-lg icon-animation dark-green" id="alimentar_plan_button"></i>
                         </div>
                         <div class="card_icon">
-                            <i class="fa-solid fa-pencil fa-lg icon-animation blue"></i>
+                            <i class="fa-solid fa-pencil fa-lg icon-animation blue" id="edit_user_button"></i>
                         </div>
                         <div class="card_icon">
-                            <i class="fa-solid fa-trash fa-lg icon-animation red"></i>
+                            <i class="fa-solid fa-trash fa-lg icon-animation red" id="delete_user_button"></i>
                         </div>
+                        <input type="hidden" id="user_cpf" value="{{user[0]}}">
                     </div>
                 </div>
             {% endfor %}
@@ -53,6 +54,23 @@
         {% endif %}
     </div>
   </div>
+  {% set messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+     {% for category, message in messages %}
+     <div class="toast-container position-fixed bottom-0 end-0 p-3" id="toast">
+        <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+           <div class="toast-header">
+             <img src="{{url_for('static', filename='img/favicon.png')}}" width="5%" height="100%" class="rounded me-2" alt="Logomarca">
+             <strong class="me-auto">Notificação</strong>
+             <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+           </div>
+           <div class="toast-body {{category}}">
+             {{message}}
+           </div>
+         </div>
+     </div>
+     {% endfor %}
+  {% endif %}
 {% endblock %}
 
 {% block script %}

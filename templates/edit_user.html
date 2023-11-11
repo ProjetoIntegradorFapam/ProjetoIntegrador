@@ -1,0 +1,105 @@
+{% extends 'layout.html' %}
+{% block head %}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/edit_user.css')}}">
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid content">
+    <div class="register col-md-8">
+      <form action="/edit_user/{{user[0][0]}}" id="edit_user_form" method="post" class="row g-3 needs-validation" novalidate>
+        <div class="col-md-6">
+           <label for="cpf" class="form-label">CPF</label>
+           <input name="cpf" type="text"  class="form-control" id="cpf" required="" value="{{user[0][0]}}" maxlength="14" onkeypress="formatar('###.###.###-##', this)" disabled>
+        </div>
+        <div class="col-md-6">
+           <label for="nome" class="form-label">NOME</label>
+           <input name="nome" type="text" class="form-control" id="nome" required="" value="{{user[0][1]}}" disabled>
+           <div class="invalid-feedback">
+              Insira o nome!
+           </div>
+        </div>
+        <div class="col-md-6">
+           <label for="rua" class="form-label">RUA</label>
+           <input name="rua" type="text" class="form-control" id="rua" required="" value="{{user[0][2]}}">
+           <div class="invalid-feedback">
+              Insira!
+           </div>
+        </div>
+        <div class="col-md-6">
+           <label for="numero" class="form-label">NUMERO</label>
+           <input name="numero" type="number" class="form-control" id="numero" required="" value="{{user[0][3]}}">
+           <div class="invalid-feedback">
+              Insira o Numero!
+           </div>
+        </div>
+        <div class="col-md-6">
+           <label for="bairro" class="form-label">BAIRRO</label>
+           <input name="bairro" type="text" class="form-control" id="bairro" required="" value="{{user[0][4]}}">
+           <div class="invalid-feedback">
+              Insira o Bairro!
+           </div>
+        </div>
+        <div class="col-md-6">
+           <label for="cidade" class="form-label">CIDADE</label>
+           <input name="cidade" type="text" class="form-control" id="cidade" required="" value="{{user[0][5]}}">
+           <div class="invalid-feedback">
+              Insira a Cidade!
+           </div>
+        </div>
+        <div class="col-md-6">
+           <label for="celular" class="form-label">CELULAR</label>
+           <input name="celular" class="form-control" id="celular" required="" value="{{user[0][6]}}" type="tel" minlength="15" maxlength="15" onkeyup="handlePhone(event)">
+           <div class="invalid-feedback">
+              Insira o numero de Celular!
+           </div>
+        </div>
+        <div class="col-md-6">
+           <label for="email" class="form-label">EMAIL</label>
+           <div class="input-group has-validation">
+              <span class="input-group-text" id="inputGroupPrepend">@</span>
+              <input name="email" type="email" class="form-control" id="email" aria-describedby="inputGroupPrepend" required="" value="{{user[0][7]}}">
+              <div class="invalid-feedback">
+                 Insira o Email!
+              </div>
+           </div>
+        </div>
+        <div class="col-md-6">
+           <label for="senha" class="form-label">SENHA</label>
+           <input name="senha" type="password" class="form-control" id="senha" required="" value="{{user[0][8]}}">
+           <div class="invalid-feedback">
+              Insira a Senha!
+           </div>
+        </div>
+        <div class="mb-3 form-check col-md-6">
+           <input type="checkbox" class="form-check-input" name="permissao_id_checkbox" id="permissao_id_checkbox">
+           <input type="hidden" name="permissao_id" id="permissao_id" value="{{user[0][9]}}">
+           <label class="form-check-label" for="permissao_id_checkbox">ADMINISTRADOR</label>
+        </div>
+        <div class="col-12 text-center">
+           <button class="btn mx-auto" type="submit">SALVAR</button>
+        </div>
+     </form>
+    </div>
+  </div>
+  {% set messages = get_flashed_messages(with_categories=true) %}
+     {% if messages %}
+        {% for category, message in messages %}
+        <div class="toast-container position-fixed bottom-0 end-0 p-3" id="toast">
+           <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+              <div class="toast-header">
+                <img src="{{url_for('static', filename='img/favicon.png')}}" width="5%" height="100%" class="rounded me-2" alt="Logomarca">
+                <strong class="me-auto">Notificação</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+              </div>
+              <div class="toast-body {{category}}">
+                {{message}}
+              </div>
+            </div>
+        </div>
+        {% endfor %}
+     {% endif %}
+{% endblock %}
+
+{% block script %}
+  <script src="{{url_for('static', filename='js/edit_user.js')}}"></script>
+{% endblock %}

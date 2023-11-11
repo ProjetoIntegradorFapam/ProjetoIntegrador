@@ -43,3 +43,7 @@
     background: var(--grey);
     float: right;
 }
+
+#search_icon:hover {
+    cursor: pointer;
+}

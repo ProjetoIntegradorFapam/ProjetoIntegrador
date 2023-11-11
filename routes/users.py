@@ -1,11 +1,11 @@
 #importando bibliotecas, frameworks e microframeworks
-from flask import Blueprint, render_template, redirect, request
+from flask import Blueprint, render_template, redirect, request, flash
 
 #importando gerenciamento de autenticação do usuário
 from routes.login import user
 
 #importando utils
-from db.utils import select_users
+from db.utils import select_users, delete_user_db
 
 #instanciando "users" utilizando Blueprint (É OBRIGRATÓRIO utilizar "__name__" após o nome da view, ou seja, rota.)
 bp = Blueprint('users', __name__)
@@ -26,3 +26,25 @@ def users():
     #redireciona para login
     return redirect('/login')
 
+#Definindo rota "/delete_user"
+@bp.route('/delete_user', methods=['GET'])
+def delete_user():
+
+  cpf = request.args.get('cpf')
+
+  if delete_user_db(cpf):
+
+    #mensagem flash
+    flash('Usuário removido com sucesso!')
+    #renderizando home e enviando os usuários do banco
+    return redirect('/users')
+  else:
+    #mensagem flash
+    flash('Não foi possível remover o usuário!')
+    return redirect('/users')
+
+#Definindo rota "/alimentar_plan"
+@bp.route('/alimentar_plan/<cpf>', methods=['GET'])
+def delete_user(cpf):
+
+  return render_template('alimentar_plan.html', title='Plano alimentar', )
