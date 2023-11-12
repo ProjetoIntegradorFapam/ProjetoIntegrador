@@ -371,7 +371,7 @@ def select_alimentarPlan(descricao):
     cursor = connection.cursor()
 
     #comando a ser utilizado
-    command = f'SELECT id, cpf, descricao FROM plano_alimentar WHERE cpf = "{cpf}", descricao = "{descricao}"'
+    command = f'SELECT cpf, descricao FROM plano_alimentar WHERE cpf = "{cpf}", descricao = "{descricao}"'
 
     #executando comando
     cursor.execute(command)
