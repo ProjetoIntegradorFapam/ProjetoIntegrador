@@ -319,7 +319,7 @@ def update_clinic(cnpj, rua, numero, bairro, cidade, celular, telefone, email):
     if len(response) != 0:
         return False
     else:
-        command = f'update empresa set rua = "{rua}" and numero = {numero} and bairro = "{bairro}" and cidade = "{cidade}" and celular = "{celular}" and telefone = "{telefone}" and email = "{email}" where cnpj = "{cnpj}"'
+        command = f'update empresa set rua = "{rua}", numero = {numero}, bairro = "{bairro}", cidade = "{cidade}", celular = "{celular}", telefone = "{telefone}", email = "{email}" where cnpj = "{cnpj}"'
     
         cursor.execute(command)
         
@@ -361,7 +361,8 @@ def delete_user_db(cpf):
     else:
         return False
 
-'''def select_alimentarPlan():
+def select_alimentarPlan(descricao):
+
     from db.connection import db_connect
 
     connection = db_connect()
@@ -370,7 +371,7 @@ def delete_user_db(cpf):
     cursor = connection.cursor()
 
     #comando a ser utilizado
-    command = f'SELECT cnpj, razao_social, rua, numero, bairro, cidade, celular, telefone, email FROM empresa WHERE cnpj = "{cnpj}" and razao_social = "{razao_social}" and rua = "{rua}" and numero = {numero} and bairro = "{bairro}" and cidade = "{cidade}" and telefone = "{telefone}" and email = "{email}"'
+    command = f'SELECT cpf, descricao FROM plano_alimentar WHERE cpf = "{cpf}", descricao = "{descricao}"'
 
     #executando comando
     cursor.execute(command)
@@ -394,4 +395,92 @@ def delete_user_db(cpf):
     if len(response) == 0:
         return False
     else:
-        return response'''
+        return response
+
+def insert_alimentarPlan(cpf, descricao):
+        
+    from db.connection import db_connect
+
+    connection = db_connect()
+    
+    #instanciando cursor
+    cursor = connection.cursor()
+
+    command = f"select cpf from plano_alimentar where cpf = '{cpf}'"
+    cursor.execute(command)
+
+    response = cursor.fetchall()
+
+    if len(response) != 0:
+        return False
+    else:
+        command = f'INSERT INTO plano_alimenar (cpf, descricao) values ("{cpf}", "{descricao}")'
+    
+        cursor.execute(command)
+        
+        connection.commit()
+
+        cursor.close()
+
+        connection.close()
+
+        return True
+
+def update_alimentarPlan(cpf, descricao):
+
+    from db.connection import db_connect
+
+    connection = db_connect()
+    
+    #instanciando cursor
+    cursor = connection.cursor()
+
+    command = f"select cpf from plano_alimentar where cpf = '{cpf}'"
+    cursor.execute(command)
+
+    response = cursor.fetchall()
+
+    if response:
+
+        command = f'update plano_alimentar set descricao = "{descricao}" where cpf = "{cpf}"'
+    
+        cursor.execute(command)
+        
+        connection.commit()
+
+        cursor.close()
+
+        connection.close()
+
+        return True
+    else:
+        return False
+
+def delete_alimentarPlan(cpf):
+    from db.connection import db_connect
+
+    connection = db_connect()
+
+    #instanciando cursor
+    cursor = connection.cursor()
+
+    command = f'select cpf from plano_aliemntar where cpf = "{cpf}"'
+    cursor.execute(command)
+
+    response = cursor.fetchall()
+
+    if response:
+        
+        command = f'delete from plano_alimentar where cpf = "{cpf}"'
+
+        cursor.execute(command)
+        
+        connection.commit()
+
+        cursor.close()
+
+        connection.close()
+
+        return True
+    else:
+        return False 
