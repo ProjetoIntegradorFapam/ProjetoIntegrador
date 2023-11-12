@@ -33,7 +33,7 @@ def edit_user(cpf):
         celular = celular.replace('-','')
 
         if utils.update_user(cpf, rua, numero, bairro, cidade, celular, email):
-            flash('Dados do usuário atualizado com sucesso!','success')
+            flash('Dados do usuário atualizados com sucesso!','success')
             return redirect('/users')
         else :
             flash('Não foi possível atualizar os dados do usuário!','error')

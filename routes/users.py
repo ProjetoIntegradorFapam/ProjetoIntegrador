@@ -35,16 +35,16 @@ def delete_user():
   if delete_user_db(cpf):
 
     #mensagem flash
-    flash('Usuário removido com sucesso!')
+    flash('Usuário removido com sucesso!', 'success')
     #renderizando home e enviando os usuários do banco
     return redirect('/users')
   else:
     #mensagem flash
-    flash('Não foi possível remover o usuário!')
+    flash('Não foi possível remover o usuário!', 'error')
     return redirect('/users')
 
 #Definindo rota "/alimentar_plan"
 @bp.route('/alimentar_plan/<cpf>', methods=['GET'])
-def delete_user(cpf):
+def alimentar_plan(cpf):
 
-  return render_template('alimentar_plan.html', title='Plano alimentar', )
+  return render_template('alimentar_plan.html', title='Plano alimentar')
