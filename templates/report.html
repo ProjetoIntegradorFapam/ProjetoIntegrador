@@ -1,0 +1,57 @@
+from reportlab.pdfgen import canvas
+from datetime import datetime
+
+'''time = datetime.now()
+formato_data_br = "%d/%m"
+data_formatada_br = time.strftime(formato_data_br)
+
+print(data_formatada_br)'''
+
+
+#Width: Largura
+#Heigh: Altura
+#Exemplo: c.drawImage(logo, 50, 751, width=120, height=80)
+#Eixo X: 50 Eixo Y: 751
+
+
+def gerar_pdf(nome_arquivo, slogan, logo, endereco, nome_empresa, telefone):
+    c = canvas.Canvas(nome_arquivo)
+
+    # Adiciona Logo
+    if logo:
+        c.drawImage(logo, 50, 751, width=120, height=80)
+    
+    # Adiciona o slogan
+    c.setFont("Helvetica", 30)
+    c.drawCentredString(300, 600, slogan)
+
+    # Adiciona o endereço
+    c.setFont("Helvetica", 12)
+    c.drawString(50, 700, "Endereço:")
+    c.drawString(150, 700, endereco)
+
+    # Adiciona o nome da empresa
+    c.drawString(50, 680, "Nome da Empresa: ")
+    c.drawString(150, 680, nome_empresa)
+
+    # Adiciona o telefone
+    c.drawString(50, 660, "Telefone:")
+    c.drawString(150, 660, telefone)
+
+    c.save()
+
+if __name__ == "__main__":
+    #time = datetime.now()
+    #formato_data_hora = "%Y%m%d%H%M%S"
+    time = datetime.now()
+    formato_data_br = "%d-%m"
+    data_formatada_br = time.strftime(formato_data_br)
+    nome_arquivo = f"relatorio_tech {data_formatada_br}.pdf"
+    slogan = "Clinica Nutricional"
+    logo = "C:/Users/rafael.teodoro/Documents/testes_relatorio/logo.png"
+    endereco = "123 Tech Street, Cidade Tech, Estado Tech, CEP Tech"
+    nome_empresa = "Tech Solutions Inc."
+    telefone = "+55 123 456 789"
+
+    gerar_pdf(nome_arquivo, slogan, logo, endereco, nome_empresa, telefone)
+    print(f"O relatorio foi gerado com sucesso no arquivo: {nome_arquivo}")
