@@ -201,7 +201,7 @@ i {
 }
 
 .toast {
-    border: 3px solid var(--light-green);
+    border: 3px solid var(--grey);
 }
 
 .toast:not(.show) {
