@@ -8,5 +8,4 @@ def db_connect():
         )
     
     if connection:
-        print('Banco de dados conectado com sucesso!')
         return connection

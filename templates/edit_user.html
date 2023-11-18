@@ -9,7 +9,7 @@
       <form action="/edit_user/{{user[0][0]}}" id="edit_user_form" method="post" class="row g-3 needs-validation" novalidate>
         <div class="col-md-6">
            <label for="cpf" class="form-label">CPF</label>
-           <input name="cpf" type="text"  class="form-control" id="cpf" required="" value="{{user[0][0]}}" maxlength="14" onkeypress="formatar('###.###.###-##', this)" disabled>
+           <input name="cpf" type="text"  class="form-control" id="cpf" required="" value="{{user[0][0][0]+user[0][0][1]+user[0][0][2]+'.'+user[0][0][3]+user[0][0][4]+user[0][0][5]+'.'+user[0][0][6]+user[0][0][7]+user[0][0][8]+'-'+user[0][0][9]+user[0][0][10]}}" maxlength="14" disabled>
         </div>
         <div class="col-md-6">
            <label for="nome" class="form-label">NOME</label>
