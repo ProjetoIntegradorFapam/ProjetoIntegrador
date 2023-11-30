@@ -9,10 +9,10 @@ def select_users(cpf):
 
     if cpf:
         #comando a ser utilizado
-        command = f'SELECT cpf, nome FROM usuario where cpf = "{cpf}"'
+        command = f'SELECT cpf, nome, permissao_id FROM usuario where cpf = "{cpf}"'
     else:
         #comando a ser utilizado
-        command = f'SELECT cpf, nome FROM usuario'
+        command = f'SELECT cpf, nome, permissao_id FROM usuario'
 
     #executando comando
     cursor.execute(command)
@@ -335,33 +335,36 @@ def delete_user_db(cpf):
 
     from db.connection import db_connect
 
-    connection = db_connect()
+    try:
+        connection = db_connect()
     
-    #instanciando cursor
-    cursor = connection.cursor()
+        #instanciando cursor
+        cursor = connection.cursor()
 
-    command = f'select cpf from usuario where cpf = "{cpf}"'
-    cursor.execute(command)
-
-    response = cursor.fetchall()
-
-    if response:
-        
-        command = f'delete from usuario where cpf = "{cpf}"'
-    
+        command = f'select cpf from usuario where cpf = "{cpf}"'
         cursor.execute(command)
+
+        response = cursor.fetchall()
+
+        if response:
+            
+            command = f'delete from usuario where cpf = "{cpf}"'
         
-        connection.commit()
+            cursor.execute(command)
+            
+            connection.commit()
 
-        cursor.close()
+            cursor.close()
 
-        connection.close()
+            connection.close()
 
-        return True
-    else:
+            return True
+        else:
+            return False
+    except:
         return False
 
-def select_alimentarPlan(descricao):
+def select_alimentarPlan(cpf):
 
     from db.connection import db_connect
 
@@ -371,7 +374,7 @@ def select_alimentarPlan(descricao):
     cursor = connection.cursor()
 
     #comando a ser utilizado
-    command = f'SELECT cpf, descricao FROM plano_alimentar WHERE cpf = "{cpf}", descricao = "{descricao}"'
+    command = f'SELECT cpf, titulo, descricao FROM plano_alimentar WHERE cpf = "{cpf}"'
 
     #executando comando
     cursor.execute(command)
@@ -397,7 +400,7 @@ def select_alimentarPlan(descricao):
     else:
         return response
 
-def insert_alimentarPlan(cpf, descricao):
+def insert_alimentarPlan(cpf, titulo, descricao):
         
     from db.connection import db_connect
 
@@ -405,26 +408,17 @@ def insert_alimentarPlan(cpf, descricao):
     
     #instanciando cursor
     cursor = connection.cursor()
+    command = f'INSERT INTO plano_alimentar (cpf, titulo, descricao) values ("{cpf}", "{titulo}", "{descricao}")'
 
-    command = f"select cpf from plano_alimentar where cpf = '{cpf}'"
     cursor.execute(command)
-
-    response = cursor.fetchall()
-
-    if len(response) != 0:
-        return False
-    else:
-        command = f'INSERT INTO plano_alimenar (cpf, descricao) values ("{cpf}", "{descricao}")'
     
-        cursor.execute(command)
-        
-        connection.commit()
+    connection.commit()
 
-        cursor.close()
+    cursor.close()
 
-        connection.close()
+    connection.close()
 
-        return True
+    return True
 
 def update_alimentarPlan(cpf, descricao):
 

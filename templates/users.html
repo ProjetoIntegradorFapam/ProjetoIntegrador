@@ -29,6 +29,25 @@
         </div>
         {% if users %}
             {% for user in users %}
+                {% if user[2] == 1 %}
+                    <div class="user_card">
+                        <div class="card_title col-md-6">
+                            {{user[1]}} (Administrador)
+                        </div>
+                        <div class="card_content col-md-6">
+                            <div class="card_icon">
+                                <i class="fa-solid fa-utensils fa-lg icon-animation dark-green alimentar_plan_button"></i>
+                            </div>
+                            <div class="card_icon">
+                                <i class="fa-solid fa-pencil fa-lg icon-animation blue edit_user_button"></i>
+                            </div>
+                            <div class="card_icon">
+                                <i class="fa-solid fa-trash fa-lg icon-animation red delete_user_button"></i>
+                            </div>
+                            <input type="hidden" id="user_cpf" value="{{user[0]}}">
+                        </div>
+                    </div>
+                {% else %}
                 <div class="user_card">
                     <div class="card_title col-md-6">
                         {{user[1]}}
@@ -46,6 +65,7 @@
                         <input type="hidden" id="user_cpf" value="{{user[0]}}">
                     </div>
                 </div>
+                {% endif %}
             {% endfor %}
         {% else %}
         <div class="user_not_found">

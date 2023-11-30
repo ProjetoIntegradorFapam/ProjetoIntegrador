@@ -5,7 +5,7 @@ from flask import Blueprint, render_template, redirect, request, flash
 from routes.login import user
 
 #importando utils
-from db.utils import select_users, delete_user_db
+from db.utils import select_users, delete_user_db, select_alimentarPlan, insert_alimentarPlan, select_user_all
 
 #instanciando "users" utilizando Blueprint (É OBRIGRATÓRIO utilizar "__name__" após o nome da view, ou seja, rota.)
 bp = Blueprint('users', __name__)
@@ -19,7 +19,7 @@ def users():
     cpf = request.args.get('cpf')
 
     users = select_users(cpf)
-
+    print(users)
     #renderizando home e enviando os usuários do banco
     return render_template('users.html', title='Lista de Usuários', users=users)
   else:
@@ -47,4 +47,37 @@ def delete_user():
 @bp.route('/alimentar_plan/<cpf>', methods=['GET'])
 def alimentar_plan(cpf):
 
-  return render_template('alimentar_plan.html', title='Plano alimentar')
+  if user.isAuthenticated():
+
+    _user = select_user_all(cpf)
+    plans = select_alimentarPlan(cpf)
+
+    return render_template('alimentar_plan.html', title='Plano alimentar', alimentar_plan=plans, user=_user)
+  else:
+    return redirect('/login')
+
+#definindo rota "cadastrar/plano_alimentar"
+@bp.route('/cadastrar/plano_alimentar/<cpf>', methods=['GET'])
+def cadastrar_plano_get(cpf):
+
+  if user.isAuthenticated():
+    _user = select_user_all(cpf)
+    return render_template('alimentar_plan_form.html', title='Cadastrar plano', user=_user)
+  else:
+    return redirect('/login')
+
+@bp.route('/cadastrar/plano_alimentar', methods=['POST'])
+def cadastrar_plano_post():
+
+  cpf = request.form.get('_cpf')
+  titulo = request.form.get('titulo')
+  descricao = request.form.get('descricao')
+
+  insert_plan = insert_alimentarPlan(cpf, titulo, descricao)
+
+  if insert_plan:
+    flash('Plano cadastrado com suceso!', 'success')
+    return redirect(f"/alimentar_plan/{cpf}")
+  else:
+    flash('Não foi possível cadastrar esse plano!', 'error')
+    return redirect(f"/alimentar_plan/{cpf}")

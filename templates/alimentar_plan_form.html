@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+{% block head %}
+    <link rel="stylesheet" href="{{url_for('static', filename='css/card.css')}}">
+{% endblock %}
+{% block body %}
+    <div class="container-fluid content">
+        <div class="register col-md-8">
+            <form action="/cadastrar/plano_alimentar" id="register_user_form" method="POST" class="row g-3 needs-validation" novalidate>
+                <div class="col-md-6">
+                    <label for="cpf" class="form-label">CPF</label>
+                    <input name="cpf" type="text"  class="form-control" id="cpf" required="" value="{{user[0][0][0]+user[0][0][1]+user[0][0][2]+'.'+user[0][0][3]+user[0][0][4]+user[0][0][5]+'.'+user[0][0][6]+user[0][0][7]+user[0][0][8]+'-'+user[0][0][9]+user[0][0][10]}}" maxlength="14" disabled>
+                    <input type="hidden" name="_cpf" value="{{user[0][0][0]+user[0][0][1]+user[0][0][2]+user[0][0][3]+user[0][0][4]+user[0][0][5]+user[0][0][6]+user[0][0][7]+user[0][0][8]+user[0][0][9]+user[0][0][10]}}">
+                    <div class="invalid-feedback">
+                        Insira o CPF!
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="titulo" class="form-label">TÍTULO</label>
+                    <input name="titulo" type="text" class="form-control" id="titulo" required="" placeholder="Digite o título!">
+                    <div class="invalid-feedback">
+                        Insira o título!
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="descricao" class="form-label">DESCRIÇÃO</label>
+                    <input name="descricao" type="text" class="form-control" id="descricao" required="" placeholder="Digite a descricao">
+                    <div class="invalid-feedback">
+                        Insira a descricao!
+                    </div>
+                </div>
+                <div class="col-12 text-center">
+                    <button class="btn mx-auto" type="submit">CADASTRAR</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+{% block script %}
+<script src="{{url_for('static', filename='js/alimentar_plan.js')}}"></script>
+{% endblock %}
